@@ -1,0 +1,26 @@
+﻿---
+const projects: { title: string; description: string; link?: string }[] = [];
+---
+
+<section class="py-16">
+  <h2 class="text-2xl font-bold mb-8">
+    <span class="text-accent">#</span> Projetos
+  </h2>
+
+  {projects.length === 0 && (
+    <div class="card p-8 text-center text-base-black/60 dark:text-base-white/60">
+      Em breve, novos projetos serão adicionados aqui.
+    </div>
+  )}
+
+  {projects.length > 0 && (
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {projects.map((project) => (
+        <a href={project.link ? project.link : "#"} target={project.link ? "_blank" : "_self"} class="card block p-5 hover:border-accent/50 hover:-translate-y-1">
+          <h3 class="font-semibold text-accent mb-2">{project.title}</h3>
+          <p class="text-sm text-base-black/80 dark:text-base-white/80">{project.description}</p>
+        </a>
+      ))}
+    </div>
+  )}
+</section>

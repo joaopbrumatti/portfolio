@@ -1,0 +1,38 @@
+﻿@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-accent: #44D62C;
+  --color-base-black: #000000;
+  --color-base-white: #ffffff;
+}
+
+:root {
+  --glow-1: rgba(68, 214, 44, 0.05);
+  --glow-2: rgba(68, 214, 44, 0.03);
+  --diag-a: #ffffff;
+  --diag-b: #f3f3f3;
+}
+
+.dark {
+  --glow-1: rgba(68, 214, 44, 0.10);
+  --glow-2: rgba(68, 214, 44, 0.06);
+  --diag-a: #000000;
+  --diag-b: #060a06;
+}
+
+body {
+  @apply text-base-black dark:text-base-white transition-colors duration-300;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-image:
+    radial-gradient(circle 500px at 90% 5%, var(--glow-1), transparent),
+    radial-gradient(circle 600px at 5% 95%, var(--glow-2), transparent),
+    linear-gradient(135deg, var(--diag-a) 0%, var(--diag-b) 50%, var(--diag-a) 100%);
+  background-size: cover;
+}
+
+.card {
+  @apply bg-black/[0.02] dark:bg-white/[0.03] border border-accent/15 rounded-xl backdrop-blur-sm transition-all duration-300;
+}

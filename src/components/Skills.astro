@@ -1,0 +1,38 @@
+﻿---
+const techs = [
+  { name: "Astro", icon: "devicon-astro-plain colored" },
+  { name: "React", icon: "devicon-react-original colored" },
+  { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+  { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+  { name: "HTML5", icon: "devicon-html5-plain colored" },
+  { name: "Sass/SCSS", icon: "devicon-sass-original colored" },
+  { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+  { name: "PHP", icon: "devicon-php-plain colored" },
+  { name: "MySQL", icon: "devicon-mysql-plain colored" },
+  { name: "Git", icon: "devicon-git-plain colored" },
+  { name: "GitHub", icon: "devicon-github-original" },
+];
+
+const extras = ["SEO", "Otimização de Performance", "Gestão de Hospedagem"];
+---
+
+<section class="py-16">
+  <h2 class="text-2xl font-bold mb-8">
+    <span class="text-accent">#</span> Habilidades
+  </h2>
+
+  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 mb-10">
+    {techs.map((tech) => (
+      <div class="card flex flex-col items-center gap-2 py-5 px-3 hover:border-accent/50 hover:-translate-y-1">
+        <i class={`${tech.icon} text-3xl`}></i>
+        <span class="text-xs text-base-black/70 dark:text-base-white/70 text-center">{tech.name}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="flex flex-wrap gap-3">
+    {extras.map((item) => (
+      <span class="card text-sm text-accent px-4 py-2">{item}</span>
+    ))}
+  </div>
+</section>

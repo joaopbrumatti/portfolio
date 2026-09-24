@@ -1,0 +1,475 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Relatório Dashboard e Centro Messias</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+  :root {
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --ink: #15181a;
+    --muted: #5c6469;
+    --faint: #7c8488;
+    --rule: #d8ddd8;
+    --accent: #0f6b5f;
+    --accent-soft: #dfeee9;
+    --up: #1d7a3e;
+    --down: #b3372b;
+    --bar: #9fcfc4;
+    --shadow: 0 1px 2px rgba(21, 24, 26, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0f1213;
+      --surface: #171b1d;
+      --ink: #e9edec;
+      --muted: #9aa4a6;
+      --faint: #7d888a;
+      --rule: #262c2e;
+      --accent: #54d8c0;
+      --accent-soft: #14302c;
+      --up: #5fd08a;
+      --down: #f08a7e;
+      --bar: #2b6b60;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0f1213;
+    --surface: #171b1d;
+    --ink: #e9edec;
+    --muted: #9aa4a6;
+    --faint: #7d888a;
+    --rule: #262c2e;
+    --accent: #54d8c0;
+    --accent-soft: #14302c;
+    --up: #5fd08a;
+    --down: #f08a7e;
+    --bar: #2b6b60;
+    --shadow: none;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  .page {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 20px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  h1, h2, h3 { font-family: Chivo, system-ui, sans-serif; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .eyebrow, .rot {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .voltar { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; align-self: flex-start; }
+  .voltar:hover { text-decoration: underline; }
+
+  /* Capa: os dois projetos, lado a lado, como índice. */
+  .capa { display: flex; flex-direction: column; gap: 22px; }
+  .capa h1 { font-size: clamp(34px, 6vw, 56px); font-weight: 900; line-height: 1.04; letter-spacing: -.02em; }
+  .capa .lede { font-size: clamp(18px, 2.3vw, 21px); color: var(--muted); max-width: 62ch; }
+  .indice {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  }
+  .indice a {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 20px 24px 20px 0; text-decoration: none; color: var(--ink);
+  }
+  .indice a + a { border-left: 1px solid var(--rule); padding-left: 24px; }
+  .indice strong { font-family: Chivo, system-ui, sans-serif; font-size: 20px; }
+  .indice span:last-child { color: var(--muted); font-size: 15.5px; }
+  .indice a:hover strong { color: var(--accent); }
+
+  /* Cada projeto abre com um divisor largo e a ficha técnica. */
+  .projeto { display: flex; flex-direction: column; gap: 48px; scroll-margin-top: 24px; }
+  .abre { display: flex; flex-direction: column; gap: 18px; border-top: 3px solid var(--ink); padding-top: 22px; }
+  .abre h2 { font-size: clamp(30px, 4.6vw, 44px); font-weight: 900; letter-spacing: -.02em; line-height: 1.08; }
+  .abre .lede { font-size: 19px; color: var(--muted); max-width: 64ch; }
+  .ficha {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 18px 28px; padding: 18px 0; border-bottom: 1px solid var(--rule);
+  }
+  .ficha div { display: flex; flex-direction: column; gap: 4px; }
+  .ficha .rot { font-size: 10.5px; letter-spacing: .14em; }
+  .ficha .val { font-size: 15px; font-weight: 600; }
+
+  section { display: flex; flex-direction: column; gap: 18px; }
+  section h3.tit { font-size: clamp(22px, 3vw, 27px); font-weight: 700; letter-spacing: -.01em; }
+  .prosa { max-width: 66ch; display: flex; flex-direction: column; gap: 14px; }
+  .prosa .secundario { color: var(--muted); }
+
+  /* Recursos: título curto, explicação ao lado. */
+  .lista { display: flex; flex-direction: column; }
+  .item {
+    display: grid; grid-template-columns: 200px 1fr; gap: 4px 28px;
+    padding: 16px 0; border-top: 1px solid var(--rule);
+  }
+  .item:last-child { border-bottom: 1px solid var(--rule); }
+  .item h4 { margin: 0; font-family: Chivo, system-ui, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.35; }
+  .item p { color: var(--muted); font-size: 15.5px; max-width: 62ch; }
+  code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .86em; background: var(--accent-soft); color: var(--ink);
+    padding: 1px 5px; border-radius: 3px;
+  }
+
+  /* Maquete do relatório: dados fictícios, desenhados em HTML. */
+  .maquete {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+    box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; gap: 18px;
+  }
+  .maq-topo { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
+  .maq-topo strong { font-family: Chivo, system-ui, sans-serif; font-size: 17px; }
+  .maq-topo span { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--muted); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .kpi { border: 1px solid var(--rule); border-radius: 4px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
+  .kpi .v { font-family: Chivo, system-ui, sans-serif; font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .kpi .d { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .d.up { color: var(--up); }
+  .d.down { color: var(--down); }
+  .grafico svg { display: block; width: 100%; height: auto; }
+  .grafico text { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; fill: var(--faint); }
+  .tabela-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; min-width: 460px; }
+  th { text-align: left; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 500; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+  td { padding: 8px; border-bottom: 1px solid var(--rule); }
+  td.n, th.n { text-align: right; }
+  tr.sub td { color: var(--muted); font-size: 13px; }
+  tr.sub td:first-child { padding-left: 24px; }
+  figcaption {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px; line-height: 1.55; color: var(--muted);
+  }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+
+  /* Três áreas isoladas: três colunas que não se tocam. */
+  .areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .area {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 18px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .area .rota { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; color: var(--accent); }
+  .area h4 { margin: 0; font-family: Chivo, system-ui, sans-serif; font-size: 18px; }
+  .area p { font-size: 15px; color: var(--muted); }
+  .area ul { margin: 0; padding-left: 18px; font-size: 14.5px; display: flex; flex-direction: column; gap: 2px; }
+  .area .chave { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--rule); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; color: var(--faint); }
+
+  .numeros { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 24px; }
+  .numeros .n {
+    font-family: Chivo, system-ui, sans-serif; font-size: 40px; font-weight: 900; line-height: 1;
+    letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: var(--accent);
+  }
+  .numeros .rot { display: block; margin-top: 7px; }
+
+  .nota {
+    border-left: 3px solid var(--accent); background: var(--surface);
+    padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; max-width: 70ch;
+  }
+  .nota p { font-size: 15.5px; color: var(--muted); }
+  .nota strong { color: var(--ink); }
+
+  .rodape {
+    border-top: 1px solid var(--rule); padding-top: 20px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; color: var(--faint); line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    .item { grid-template-columns: 1fr; gap: 6px; }
+    .page { gap: 44px; padding-block: 40px 60px; }
+    .indice a + a { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; }
+  }
+</style>
+
+<div class="page">
+
+  <a class="voltar" href="/#projetos">← Voltar ao portfólio</a>
+
+  <header class="capa">
+    <span class="eyebrow">Portfólio · Dois produtos internos</span>
+    <h1>Relatório Dashboard e Centro de Controle do Messias</h1>
+    <p class="lede">
+      Duas ferramentas feitas sob medida para quem opera mídia todos os dias. Uma
+      entrega ao cliente o resultado dos anúncios. A outra organiza o dia de quem vende
+      e acompanha esses clientes.
+    </p>
+    <nav class="indice" aria-label="Projetos">
+      <a href="#relatorio">
+        <span class="rot">Projeto 1 · AAgência Digital</span>
+        <strong>Relatório Dashboard</strong>
+        <span>Relatório de Meta Ads, Google Ads e GA4 por cliente, com link público para compartilhar.</span>
+      </a>
+      <a href="#messias">
+        <span class="rot">Projeto 2 · For People</span>
+        <strong>Centro de Controle do Messias</strong>
+        <span>Tarefas, CRM de vendas e painel da operação de mídia, em áreas com senha própria.</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═════════════════════════ PROJETO 1 ═════════════════════════ -->
+  <article class="projeto" id="relatorio">
+    <div class="abre">
+      <span class="eyebrow">Projeto 1 · Estudo de caso</span>
+      <h2>Relatório Dashboard</h2>
+      <p class="lede">
+        A agência atende cerca de 70 clientes, e todo mês cada um espera saber o que o
+        investimento em anúncios rendeu. O relatório existia num tema de WordPress em PHP.
+        Ele foi reescrito como módulo do painel interno: escolhe o cliente e o período, e
+        sai um relatório pronto para mandar.
+      </p>
+      <div class="ficha">
+        <div><span class="rot">Papel</span><span class="val">Desenvolvimento integral do módulo</span></div>
+        <div><span class="rot">Período</span><span class="val">Ago – set / 2026</span></div>
+        <div><span class="rot">Stack</span><span class="val">Next.js 15 · React 19 · TypeScript</span></div>
+        <div><span class="rot">Dados</span><span class="val">Graph API da Meta · GA4 · Neon</span></div>
+        <div><span class="rot">Cache</span><span class="val">Cloudflare KV</span></div>
+      </div>
+    </div>
+
+    <section>
+      <span class="eyebrow">O problema</span>
+      <h3 class="tit">Um relatório preso num tema de site</h3>
+      <div class="prosa">
+        <p>
+          A versão antiga funcionava, mas morava dentro de um tema WordPress, com as
+          chaves de acesso às contas de anúncio gravadas em arquivos do próprio tema. Mexer
+          nela era arriscado, e cada relatório compartilhado dependia de alguém da equipe
+          abrir e mandar print.
+        </p>
+        <p class="secundario">
+          A reescrita partiu de uma regra: nenhuma credencial do código antigo seria lida,
+          copiada nem reaproveitada. O acesso novo nasce do zero, fica só no servidor e não
+          aparece em log.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <span class="eyebrow">O produto</span>
+      <h3 class="tit">O relatório, tela a tela</h3>
+      <figure>
+        <div class="maquete" role="img" aria-label="Maquete do relatório com indicadores, gráfico semanal e tabela de campanhas, usando dados fictícios">
+          <div class="maq-topo">
+            <strong>Padaria Exemplo · Foco: mensagem</strong>
+            <span>01/08 – 31/08 vs. 01/07 – 31/07</span>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><span class="rot">Investido</span><span class="v">R$ 2.480</span><span class="d up">+12,4%</span></div>
+            <div class="kpi"><span class="rot">Conversas</span><span class="v">318</span><span class="d up">+21,8%</span></div>
+            <div class="kpi"><span class="rot">Custo por conversa</span><span class="v">R$ 7,80</span><span class="d up">−7,7%</span></div>
+            <div class="kpi"><span class="rot">Alcance</span><span class="v">41.920</span><span class="d down">−3,1%</span></div>
+          </div>
+          <div class="grafico">
+            <svg viewBox="0 0 640 170" aria-hidden="true">
+              <g stroke="var(--rule)" stroke-width="1">
+                <line x1="40" y1="20" x2="630" y2="20"></line>
+                <line x1="40" y1="70" x2="630" y2="70"></line>
+                <line x1="40" y1="120" x2="630" y2="120"></line>
+              </g>
+              <text x="32" y="24" text-anchor="end">100</text>
+              <text x="32" y="74" text-anchor="end">50</text>
+              <text x="32" y="124" text-anchor="end">0</text>
+              <g fill="var(--bar)">
+                <rect x="70" y="72" width="70" height="48" rx="2"></rect>
+                <rect x="190" y="58" width="70" height="62" rx="2"></rect>
+                <rect x="310" y="45" width="70" height="75" rx="2"></rect>
+                <rect x="430" y="36" width="70" height="84" rx="2"></rect>
+                <rect x="550" y="96" width="70" height="24" rx="2"></rect>
+              </g>
+              <polyline fill="none" stroke="var(--accent)" stroke-width="2.5" points="105,82 225,64 345,50 465,40 585,104"></polyline>
+              <g fill="var(--accent)">
+                <circle cx="105" cy="82" r="3.5"></circle><circle cx="225" cy="64" r="3.5"></circle>
+                <circle cx="345" cy="50" r="3.5"></circle><circle cx="465" cy="40" r="4.5"></circle>
+                <circle cx="585" cy="104" r="3.5"></circle>
+              </g>
+              <text x="105" y="142" text-anchor="middle">sem 1</text>
+              <text x="225" y="142" text-anchor="middle">sem 2</text>
+              <text x="345" y="142" text-anchor="middle">sem 3</text>
+              <text x="465" y="142" text-anchor="middle">sem 4</text>
+              <text x="585" y="142" text-anchor="middle">sem 5</text>
+              <text x="40" y="164">barras: conversas · linha: sessões no site (GA4)</text>
+            </svg>
+          </div>
+          <div class="tabela-wrap">
+            <table>
+              <thead><tr><th>Campanha</th><th class="n">Investido</th><th class="n">Resultado</th><th class="n">Custo</th></tr></thead>
+              <tbody>
+                <tr><td>Cardápio de agosto</td><td class="n">R$ 1.520</td><td class="n">204 conversas</td><td class="n">R$ 7,45</td></tr>
+                <tr class="sub"><td>Público do bairro</td><td class="n">R$ 910</td><td class="n">131</td><td class="n">R$ 6,95</td></tr>
+                <tr class="sub"><td>Semelhante a clientes</td><td class="n">R$ 610</td><td class="n">73</td><td class="n">R$ 8,36</td></tr>
+                <tr><td>Café da manhã</td><td class="n">R$ 960</td><td class="n">114 conversas</td><td class="n">R$ 8,42</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <figcaption>Maquete com dados fictícios. Reproduz a estrutura do relatório real: indicadores com variação, gráfico de anúncios e site, e campanhas abertas por conjunto de anúncios.</figcaption>
+      </figure>
+
+      <div class="lista">
+        <div class="item"><h4>Quatro focos</h4><p>Cada cliente tem um objetivo: alcance, compras, cadastro ou mensagem. O foco escolhe quais indicadores aparecem nos cartões e qual métrica o gráfico desenha. A métrica de cada campanha segue o objetivo de otimização configurado na Meta.</p></div>
+        <div class="item"><h4>Comparação de períodos</h4><p>Com um período anterior escolhido, todo indicador mostra a variação percentual colorida pelo sentido certo: custo que cai é verde, alcance que cai é vermelho.</p></div>
+        <div class="item"><h4>Site ao lado dos anúncios</h4><p>Um segundo gráfico traz dados do Google Analytics 4, lidos por uma conta de serviço. O que entra depende do foco: sessões, compras, cadastros ou cliques no WhatsApp.</p></div>
+        <div class="item"><h4>Google Ads por planilha</h4><p>A equipe sobe o CSV exportado do Google Ads e ele vira uma seção do relatório. O leitor aceita o formato brasileiro: separador <code>;</code>, preâmbulo, linha de total e BOM.</p></div>
+        <div class="item"><h4>Saldo das contas</h4><p>Cartão de saldo no relatório e uma página <code>/saldos</code> com todas as contas, para a equipe ver quem está perto de parar antes do cliente perceber.</p></div>
+        <div class="item"><h4>Link para o cliente</h4><p>Um clique gera um endereço curto <code>/r/&lt;código&gt;</code> que abre o relatório sem login. Uma tela lista os links emitidos e permite revogar cada um.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <span class="eyebrow">Decisões</span>
+      <h3 class="tit">O que exigiu escolha</h3>
+      <div class="lista">
+        <div class="item"><h4>Link que não se adivinha</h4><p>O código do link é aleatório, com cerca de 49 bits, e não carrega informação: trocar uma letra não leva ao relatório de outro cliente. Os parâmetros são guardados no servidor e validados de novo ao abrir.</p></div>
+        <div class="item"><h4>Cache que nunca derruba</h4><p>As respostas da Meta e do GA4 ficam no KV. Um período já encerrado vale 24 horas; um período que inclui hoje, 10 minutos. Se o cache falhar, a consulta segue direto para a API, sem página de erro.</p></div>
+        <div class="item"><h4>Sessão assinada</h4><p>O login antigo gravava a própria senha num cookie legível pelo navegador. Isso saiu. Agora o cookie carrega um token HMAC que expira em 12 horas, com <code>HttpOnly</code> e <code>SameSite=Strict</code>, e o login tem limite de tentativas.</p></div>
+        <div class="item"><h4>Toda ação checa sessão</h4><p>Toda Server Action chama <code>requireAuth()</code> antes de tocar no banco. Ela é um POST endereçável e poderia ser chamada a partir de uma rota aberta, como o login.</p></div>
+        <div class="item"><h4>Deploy que avisa antes</h4><p>Um preflight de variáveis roda antes de cada build e trava se faltar segredo. Os erros que só apareceriam em produção, como a rota agendada devolvendo 503, viram falha de build.</p></div>
+      </div>
+    </section>
+  </article>
+
+  <!-- ═════════════════════════ PROJETO 2 ═════════════════════════ -->
+  <article class="projeto" id="messias">
+    <div class="abre">
+      <span class="eyebrow">Projeto 2 · Estudo de caso</span>
+      <h2>Centro de Controle do Messias</h2>
+      <p class="lede">
+        O Messias divide o dia entre a AAgência, a For People (mídia indoor) e a vida
+        pessoal. Tudo começou como um protótipo em React que guardava dados só no
+        navegador. Hoje é um produto em produção, com banco de dados, três áreas
+        independentes e acesso pelo celular.
+      </p>
+      <div class="ficha">
+        <div><span class="rot">Papel</span><span class="val">Desenvolvimento integral</span></div>
+        <div><span class="rot">Período</span><span class="val">Ago – set / 2026</span></div>
+        <div><span class="rot">Stack</span><span class="val">TypeScript · Hono · Drizzle</span></div>
+        <div><span class="rot">Infra</span><span class="val">Cloudflare Workers · Neon</span></div>
+        <div><span class="rot">Estado</span><span class="val">Em produção</span></div>
+      </div>
+    </div>
+
+    <section>
+      <span class="eyebrow">O ponto de partida</span>
+      <h3 class="tit">Do localStorage para a produção</h3>
+      <div class="prosa">
+        <p>
+          A versão 2.0 do protótipo já tinha a ideia certa: lista de tarefas por frente de
+          trabalho, funil de leads e exportação em CSV. Mas tudo morava no
+          <code>localStorage</code>. Trocar de computador significava perder os dados, e o
+          celular não via nada.
+        </p>
+        <p class="secundario">
+          A reescrita manteve a lógica que o Messias já usava e trocou a base: API num
+          Worker, Postgres serverless e uma tela que funciona no toque. Depois disso o
+          produto cresceu por pedidos dele e da equipe.
+        </p>
+      </div>
+      <div class="numeros">
+        <div><span class="n">3</span><span class="rot">Áreas com senha própria</span></div>
+        <div><span class="n">8</span><span class="rot">Estágios do funil</span></div>
+        <div><span class="n">39</span><span class="rot">Clientes de mídia importados</span></div>
+        <div><span class="n">7</span><span class="rot">Tabelas da operação de mídia</span></div>
+      </div>
+    </section>
+
+    <section>
+      <span class="eyebrow">O produto</span>
+      <h3 class="tit">Três áreas que não se enxergam</h3>
+      <div class="areas">
+        <div class="area">
+          <span class="rota">/tarefas</span>
+          <h4>Jobs | Messias</h4>
+          <p>Tarefas do dia separadas em AAgência, For People e Pessoal.</p>
+          <ul>
+            <li>Descrição, prazo e cor por tarefa</li>
+            <li>Concluir esconde a tarefa, com "Desfazer" por 8 s</li>
+            <li>Ordem com setas no celular</li>
+          </ul>
+          <span class="chave">senha própria · não leva ao CRM</span>
+        </div>
+        <div class="area">
+          <span class="rota">/crm</span>
+          <h4>CRM For People</h4>
+          <p>Vendas de mídia indoor, do primeiro contato ao fechamento.</p>
+          <ul>
+            <li>Kanban de 8 estágios com follow-up vencido</li>
+            <li>Prospecção por segmento, promovida a lead em um clique</li>
+            <li>Parque de telas instaladas por cliente</li>
+          </ul>
+          <span class="chave">senha própria · marca For People</span>
+        </div>
+        <div class="area">
+          <span class="rota">/planilha</span>
+          <h4>Agenda de mídia AAgência</h4>
+          <p>A operação de tráfego pago que antes vivia num PDF.</p>
+          <ul>
+            <li>Central de pendências em tabela e kanban</li>
+            <li>Saldo das contas lido da Meta</li>
+            <li>Recarga lançada colando a mensagem crua</li>
+          </ul>
+          <span class="chave">senha própria · cookie <code>__Host-</code> por área</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="eyebrow">Decisões</span>
+      <h3 class="tit">O que exigiu escolha</h3>
+      <div class="lista">
+        <div class="item"><h4>Isolamento real</h4><p>Cada área tem senha e cookie próprios. Nenhuma página revela a existência das outras, e a API de uma não responde com a sessão de outra.</p></div>
+        <div class="item"><h4>Nada derivado no banco</h4><p>"Atrasada", faixa de saldo e situação do cliente são calculados na leitura, a partir das datas. Um status gravado precisaria de alguém atualizando à meia-noite; um calculado nunca fica desencontrado.</p></div>
+        <div class="item"><h4>Saldo da Meta sem falso zero</h4><p>O saldo é o limite de gasto menos o valor já gasto. Conta sem limite definido não grava nada, porque um zero ali marcaria como esgotada justamente a conta que pode gastar à vontade. Cada sobrescrita guarda o valor anterior no histórico.</p></div>
+        <div class="item"><h4>Bloqueio de login no banco</h4><p>Três erros em 30 minutos travam a origem, e um freio global fecha o login sob ataque distribuído. O IP entra só como HMAC truncado: o histórico conta tentativas sem registrar quem acessou de onde.</p></div>
+        <div class="item"><h4>CSP sem <code>unsafe-inline</code></h4><p>Nenhum script ou estilo inline. Os eventos entram por delegação, e a cor escolhida para cada tarefa é aplicada via CSSOM.</p></div>
+        <div class="item"><h4>Migrações aditivas</h4><p>Cada mudança de schema é um script idempotente que só acrescenta. Uma tabela em produção nunca é recriada por engano.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <span class="eyebrow">Resultado</span>
+      <h3 class="tit">O que mudou na rotina</h3>
+      <div class="prosa">
+        <p>
+          As tarefas passaram a acompanhar o Messias do computador ao celular, e o funil
+          de vendas ganhou um aviso de follow-up vencido. A operação de mídia da AAgência
+          saiu de um PDF para um painel onde o saldo de cada conta se atualiza sozinho.
+        </p>
+        <p class="secundario">
+          Tudo roda num único Worker com banco serverless, sem servidor para manter.
+        </p>
+      </div>
+    </section>
+  </article>
+
+  <div class="nota">
+    <span class="eyebrow">Sobre os exemplos</span>
+    <p>
+      A maquete e os exemplos desta página usam <strong>dados fictícios</strong>: nenhum
+      cliente, valor, conta de anúncio ou contato real aparece aqui.
+    </p>
+  </div>
+
+  <footer class="rodape">
+    João Pinheiro Brumatti · Desenvolvimento de produto · 2026
+  </footer>
+
+</div>
+
+</body></html>

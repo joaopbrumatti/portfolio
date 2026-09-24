@@ -1,8 +1,35 @@
-﻿---
-const projects: { title: string; description: string; link?: string }[] = [];
+---
+interface Project {
+  title: string;
+  description: string;
+  link?: string;
+  company?: string;
+  stack?: string[];
+}
+
+const projects: Project[] = [
+  {
+    title: 'Relatório Dashboard',
+    company: 'AAgência Digital',
+    description:
+      'Relatório de Meta Ads, Google Ads e GA4 por cliente, com link público para compartilhar. Reescrita de um tema WordPress em PHP como módulo do painel interno.',
+    stack: ['Next.js', 'React', 'TypeScript', 'Cloudflare KV'],
+    link: '/estudos-de-caso/#relatorio',
+  },
+  {
+    title: 'Centro de Controle do Messias',
+    company: 'For People',
+    description:
+      'Tarefas, CRM de vendas e painel da operação de mídia, em áreas com senha própria. Saiu de um protótipo com localStorage para um produto em produção.',
+    stack: ['TypeScript', 'Hono', 'Drizzle', 'Cloudflare Workers', 'Neon'],
+    link: '/estudos-de-caso/#messias',
+  },
+];
+
+const isExternal = (link?: string) => !!link && /^https?:\/\//.test(link);
 ---
 
-<section class="py-16">
+<section id="projetos" class="py-16 scroll-mt-4">
   <h2 class="text-2xl font-bold mb-8">
     <span class="text-accent">#</span> Projetos
   </h2>
@@ -16,9 +43,33 @@ const projects: { title: string; description: string; link?: string }[] = [];
   {projects.length > 0 && (
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {projects.map((project) => (
-        <a href={project.link ? project.link : "#"} target={project.link ? "_blank" : "_self"} class="card block p-5 hover:border-accent/50 hover:-translate-y-1">
-          <h3 class="font-semibold text-accent mb-2">{project.title}</h3>
+        <a
+          href={project.link ?? '#'}
+          target={isExternal(project.link) ? '_blank' : '_self'}
+          rel={isExternal(project.link) ? 'noopener noreferrer' : undefined}
+          class="card flex flex-col gap-3 p-5 hover:border-accent/50 hover:-translate-y-1"
+        >
+          <div>
+            {project.company && (
+              <span class="block text-xs uppercase tracking-widest text-base-black/50 dark:text-base-white/50 mb-1">
+                {project.company}
+              </span>
+            )}
+            <h3 class="font-semibold text-accent">{project.title}</h3>
+          </div>
           <p class="text-sm text-base-black/80 dark:text-base-white/80">{project.description}</p>
+          {project.stack && (
+            <ul class="flex flex-wrap gap-2 mt-auto">
+              {project.stack.map((tech) => (
+                <li class="text-xs px-2 py-0.5 rounded-full border border-accent/30 text-base-black/70 dark:text-base-white/70">
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          )}
+          {project.link && (
+            <span class="text-sm text-accent">Ler estudo de caso →</span>
+          )}
         </a>
       ))}
     </div>

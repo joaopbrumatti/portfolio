@@ -1,12 +1,13 @@
----
-import ThemeToggle from './ThemeToggle.tsx';
----
-
-<header class="flex items-center justify-between py-6 border-b border-accent/20">
-  <div>
-    <h1 class="text-xl font-bold">
-      João <span class="text-accent">Pinheiro Brumatti</span>
-    </h1>
+<header class="border-b border-black/20">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-xl font-bold tracking-widest italic -skew-x-12">JPB</span>
+      <span class="h-4 w-px bg-black/40"></span>
+      <span class="hidden sm:inline text-[10px] text-black/60 tracking-wider">DESENVOLVEDOR WEB</span>
+    </div>
+    <nav class="flex gap-5 text-xs tracking-wider">
+      <a href="#projetos" class="hover:underline underline-offset-4">PROJETOS</a>
+      <a href="#contato" class="hover:underline underline-offset-4">CONTATO</a>
+    </nav>
   </div>
-  <ThemeToggle client:load />
 </header>

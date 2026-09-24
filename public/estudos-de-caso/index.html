@@ -1,208 +1,95 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Relatório Dashboard e CRM Privado</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
-  :root {
-    --ground: #f1f3f0;
-    --surface: #ffffff;
-    --ink: #15181a;
-    --muted: #5c6469;
-    --faint: #7c8488;
-    --rule: #d8ddd8;
-    --accent: #0f6b5f;
-    --accent-soft: #dfeee9;
-    --up: #1d7a3e;
-    --down: #b3372b;
-    --bar: #9fcfc4;
-    --shadow: 0 1px 2px rgba(21, 24, 26, .06);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --ground: #0f1213;
-      --surface: #171b1d;
-      --ink: #e9edec;
-      --muted: #9aa4a6;
-      --faint: #7d888a;
-      --rule: #262c2e;
-      --accent: #54d8c0;
-      --accent-soft: #14302c;
-      --up: #5fd08a;
-      --down: #f08a7e;
-      --bar: #2b6b60;
-      --shadow: none;
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --ground: #0f1213;
-    --surface: #171b1d;
-    --ink: #e9edec;
-    --muted: #9aa4a6;
-    --faint: #7d888a;
-    --rule: #262c2e;
-    --accent: #54d8c0;
-    --accent-soft: #14302c;
-    --up: #5fd08a;
-    --down: #f08a7e;
-    --bar: #2b6b60;
-    --shadow: none;
-  }
-
-  body {
-    background: var(--ground);
-    color: var(--ink);
-    font-family: "Source Sans 3", system-ui, sans-serif;
-    font-size: 17px;
-    line-height: 1.65;
-  }
-  .page {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 56px 20px 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 56px;
-  }
-  h1, h2, h3 { font-family: Chivo, system-ui, sans-serif; text-wrap: balance; margin: 0; }
-  p { margin: 0; }
-  a { color: var(--accent); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  .eyebrow, .rot {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-size: 11px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    color: var(--faint);
-  }
-
-  .voltar { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; align-self: flex-start; }
-  .voltar:hover { text-decoration: underline; }
-
-  /* Capa: os dois projetos, lado a lado, como índice. */
-  .capa { display: flex; flex-direction: column; gap: 22px; }
-  .capa h1 { font-size: clamp(34px, 6vw, 56px); font-weight: 900; line-height: 1.04; letter-spacing: -.02em; }
-  .capa .lede { font-size: clamp(18px, 2.3vw, 21px); color: var(--muted); max-width: 62ch; }
-  .indice {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-  }
-  .indice a {
-    display: flex; flex-direction: column; gap: 6px;
-    padding: 20px 24px 20px 0; text-decoration: none; color: var(--ink);
-  }
-  .indice a + a { border-left: 1px solid var(--rule); padding-left: 24px; }
-  .indice strong { font-family: Chivo, system-ui, sans-serif; font-size: 20px; }
-  .indice span:last-child { color: var(--muted); font-size: 15.5px; }
-  .indice a:hover strong { color: var(--accent); }
-
-  /* Cada projeto abre com um divisor largo e a ficha técnica. */
-  .projeto { display: flex; flex-direction: column; gap: 48px; scroll-margin-top: 24px; }
-  .abre { display: flex; flex-direction: column; gap: 18px; border-top: 3px solid var(--ink); padding-top: 22px; }
-  .abre h2 { font-size: clamp(30px, 4.6vw, 44px); font-weight: 900; letter-spacing: -.02em; line-height: 1.08; }
-  .abre .lede { font-size: 19px; color: var(--muted); max-width: 64ch; }
-  .ficha {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 18px 28px; padding: 18px 0; border-bottom: 1px solid var(--rule);
-  }
-  .ficha div { display: flex; flex-direction: column; gap: 4px; }
-  .ficha .rot { font-size: 10.5px; letter-spacing: .14em; }
-  .ficha .val { font-size: 15px; font-weight: 600; }
-
-  section { display: flex; flex-direction: column; gap: 18px; }
-  section h3.tit { font-size: clamp(22px, 3vw, 27px); font-weight: 700; letter-spacing: -.01em; }
-  .prosa { max-width: 66ch; display: flex; flex-direction: column; gap: 14px; }
-  .prosa .secundario { color: var(--muted); }
-
-  /* Recursos: título curto, explicação ao lado. */
-  .lista { display: flex; flex-direction: column; }
-  .item {
-    display: grid; grid-template-columns: 200px 1fr; gap: 4px 28px;
-    padding: 16px 0; border-top: 1px solid var(--rule);
-  }
-  .item:last-child { border-bottom: 1px solid var(--rule); }
-  .item h4 { margin: 0; font-family: Chivo, system-ui, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.35; }
-  .item p { color: var(--muted); font-size: 15.5px; max-width: 62ch; }
-  code {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-size: .86em; background: var(--accent-soft); color: var(--ink);
-    padding: 1px 5px; border-radius: 3px;
-  }
-
-  /* Maquete do relatório: dados fictícios, desenhados em HTML. */
-  .maquete {
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
-    box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; gap: 18px;
-  }
-  .maq-topo { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
-  .maq-topo strong { font-family: Chivo, system-ui, sans-serif; font-size: 17px; }
-  .maq-topo span { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--muted); }
-  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
-  .kpi { border: 1px solid var(--rule); border-radius: 4px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; }
-  .kpi .v { font-family: Chivo, system-ui, sans-serif; font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .kpi .d { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; font-variant-numeric: tabular-nums; }
-  .d.up { color: var(--up); }
-  .d.down { color: var(--down); }
-  .grafico svg { display: block; width: 100%; height: auto; }
-  .grafico text { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; fill: var(--faint); }
-  .tabela-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; min-width: 460px; }
-  th { text-align: left; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 500; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
-  td { padding: 8px; border-bottom: 1px solid var(--rule); }
-  td.n, th.n { text-align: right; }
-  tr.sub td { color: var(--muted); font-size: 13px; }
-  tr.sub td:first-child { padding-left: 24px; }
-  figcaption {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-size: 11.5px; line-height: 1.55; color: var(--muted);
-  }
-  figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
-
-  /* Três áreas isoladas: três colunas que não se tocam. */
-  .areas { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
-  .area {
-    background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
-    padding: 18px; display: flex; flex-direction: column; gap: 10px;
-  }
-  .area .rota { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; color: var(--accent); }
-  .area h4 { margin: 0; font-family: Chivo, system-ui, sans-serif; font-size: 18px; }
-  .area p { font-size: 15px; color: var(--muted); }
-  .area ul { margin: 0; padding-left: 18px; font-size: 14.5px; display: flex; flex-direction: column; gap: 2px; }
-  .area .chave { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--rule); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; color: var(--faint); }
-
-  .numeros { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 24px; }
-  .numeros .n {
-    font-family: Chivo, system-ui, sans-serif; font-size: 40px; font-weight: 900; line-height: 1;
-    letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: var(--accent);
-  }
-  .numeros .rot { display: block; margin-top: 7px; }
-
-  .nota {
-    border-left: 3px solid var(--accent); background: var(--surface);
-    padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; max-width: 70ch;
-  }
-  .nota p { font-size: 15.5px; color: var(--muted); }
-  .nota strong { color: var(--ink); }
-
-  .rodape {
-    border-top: 1px solid var(--rule); padding-top: 20px;
-    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; color: var(--faint); line-height: 1.7;
-  }
-
-  @media (max-width: 640px) {
-    .item { grid-template-columns: 1fr; gap: 6px; }
-    .page { gap: 44px; padding-block: 40px 60px; }
-    .indice a + a { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; }
-  }
+:root{--accent:#44D62C;--ink:#000;--muted:rgba(0,0,0,.72);--faint:rgba(0,0,0,.5);--card:rgba(0,0,0,.02);--line:rgba(68,214,44,.3);--acc-t:#1f8a10;--up:#1f8a10;--down:#c0392b;--da:#fff;--code:rgba(68,214,44,.14)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--ink:#fff;--muted:rgba(255,255,255,.72);--faint:rgba(255,255,255,.5);--card:rgba(255,255,255,.03);--line:rgba(68,214,44,.15);--acc-t:#44D62C;--up:#44D62C;--down:#f08a7e;--da:#000;--code:rgba(68,214,44,.12);}}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#fff;--muted:rgba(255,255,255,.72);--faint:rgba(255,255,255,.5);--card:rgba(255,255,255,.03);--line:rgba(68,214,44,.15);--acc-t:#44D62C;--up:#44D62C;--down:#f08a7e;--da:#000;--code:rgba(68,214,44,.12);}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font:16px/1.7 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--da)}
+.page{max-width:56rem;margin:0 auto;padding:0 24px 80px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--acc-t)}
+.topo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:24px 0;border-bottom:1px solid var(--line)}
+.nome{font-size:20px;font-weight:700;color:var(--ink);text-decoration:none}
+.nome span{color:var(--acc-t)}
+.acoes{display:flex;align-items:center;gap:16px;font-size:14px}
+#tema{font:inherit;font-size:14px;line-height:1.4;cursor:pointer;background:none;color:var(--acc-t);border:1px solid var(--accent);border-radius:999px;padding:4px 12px;transition:background .2s,color .2s}
+#tema:hover{background:var(--accent);color:#000}
+.card,.indice a,.ficha,.numeros>div,.maquete,.area,.nota{background:var(--card);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(4px)}
+.rot{font-size:13px;color:var(--faint)}
+.capa{display:flex;flex-direction:column;gap:20px;padding-top:24px}
+.capa h1{font-size:clamp(28px,5vw,40px);line-height:1.15;font-weight:700}
+.capa .lede{color:var(--muted);max-width:62ch}
+.indice{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.indice a{display:flex;flex-direction:column;gap:6px;padding:20px;text-decoration:none;color:var(--ink);transition:all .3s}
+.indice a:hover{border-color:rgba(68,214,44,.5);transform:translateY(-4px)}
+.indice strong{color:var(--acc-t);font-size:18px}
+.indice span:last-child{color:var(--muted);font-size:14.5px}
+.projeto{display:flex;flex-direction:column;gap:44px;scroll-margin-top:16px}
+.abre{display:flex;flex-direction:column;gap:16px}
+.abre h2{font-size:clamp(26px,4vw,32px);font-weight:700;line-height:1.2}
+.abre h2::before,section h3.tit::before{content:"# ";color:var(--acc-t)}
+.abre .lede{color:var(--muted);max-width:64ch}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px 24px;padding:18px 20px}
+.ficha div{display:flex;flex-direction:column;gap:2px}
+.ficha .val{font-size:14.5px;font-weight:600}
+section{display:flex;flex-direction:column;gap:16px}
+section h3.tit{font-size:22px;font-weight:700;line-height:1.3}
+.prosa{max-width:66ch;display:flex;flex-direction:column;gap:14px}
+.prosa .secundario{color:var(--muted)}
+.lista{display:flex;flex-direction:column}
+.item{display:grid;grid-template-columns:200px 1fr;gap:4px 28px;padding:16px 0;border-top:1px solid var(--line)}
+.item:last-child{border-bottom:1px solid var(--line)}
+.item h4{font-size:15px;font-weight:600;line-height:1.4}
+.item p{color:var(--muted);font-size:15px;max-width:62ch}
+code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--code);padding:1px 5px;border-radius:4px}
+.maquete{padding:20px;display:flex;flex-direction:column;gap:18px}
+.maq-topo{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.maq-topo span{font-size:13px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.kpi{border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.kpi .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:13px;font-variant-numeric:tabular-nums}
+.d.up{color:var(--up)}.d.down{color:var(--down)}
+.grafico svg{display:block;width:100%;height:auto}
+.grafico text{font:10px ui-sans-serif,system-ui,sans-serif;fill:var(--faint)}
+.grafico g[fill]{fill:rgba(68,214,44,.4)}
+.grafico polyline{stroke:var(--acc-t)}
+.tabela-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;min-width:460px}
+th{text-align:left;font-size:13px;font-weight:600;color:var(--faint);padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:8px;border-bottom:1px solid var(--line)}
+td.n,th.n{text-align:right}
+tr.sub td{color:var(--muted);font-size:13px}
+tr.sub td:first-child{padding-left:24px}
+figure{margin:0;display:flex;flex-direction:column;gap:10px}
+figcaption{font-size:13px;color:var(--faint)}
+.areas{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.area{padding:18px;display:flex;flex-direction:column;gap:10px}
+.area .rota{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--acc-t)}
+.area h4{font-size:17px;font-weight:600}
+.area p{font-size:14.5px;color:var(--muted)}
+.area ul{margin:0;padding-left:18px;font-size:14.5px;display:flex;flex-direction:column;gap:2px}
+.area .chave{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:var(--faint)}
+.numeros{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px}
+.numeros>div{padding:16px}
+.numeros .n{display:block;font-size:32px;font-weight:700;line-height:1.1;color:var(--acc-t)}
+.numeros .rot{display:block;margin-top:4px}
+.nota{padding:18px 22px;display:flex;flex-direction:column;gap:6px;max-width:70ch}
+.nota p{font-size:15px;color:var(--muted)}
+.nota strong{color:var(--ink)}
+.rodape{border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--faint)}
+@media (max-width:640px){.item{grid-template-columns:1fr;gap:6px}.page{gap:44px}}
 </style>
 
 <div class="page">
 
-  <a class="voltar" href="/#projetos">← Voltar ao portfólio</a>
+  <header class="topo">
+    <a class="nome" href="/">João <span>Pinheiro Brumatti</span></a>
+    <div class="acoes"><a href="/#projetos">← Voltar</a><button id="tema" type="button" aria-label="Alternar tema"></button></div>
+  </header>
 
   <header class="capa">
-    <span class="eyebrow">Portfólio · Dois produtos internos</span>
     <h1>Relatório Dashboard e CRM Privado</h1>
     <p class="lede">
       Duas ferramentas feitas sob medida para quem opera mídia todos os dias. Uma
@@ -211,12 +98,10 @@
     </p>
     <nav class="indice" aria-label="Projetos">
       <a href="#relatorio">
-        <span class="rot">Projeto 1 · AAgência Digital</span>
         <strong>Relatório Dashboard</strong>
         <span>Relatório de Meta Ads, Google Ads e GA4 por cliente, com link público para compartilhar.</span>
       </a>
       <a href="#crm">
-        <span class="rot">Projeto 2 · For People</span>
         <strong>CRM Privado</strong>
         <span>Tarefas, CRM de vendas e painel da operação de mídia, em áreas com senha própria.</span>
       </a>
@@ -226,7 +111,6 @@
   <!-- ═════════════════════════ PROJETO 1 ═════════════════════════ -->
   <article class="projeto" id="relatorio">
     <div class="abre">
-      <span class="eyebrow">Projeto 1 · Estudo de caso</span>
       <h2>Relatório Dashboard</h2>
       <p class="lede">
         A agência atende cerca de 70 clientes, e todo mês cada um espera saber o que o
@@ -244,7 +128,6 @@
     </div>
 
     <section>
-      <span class="eyebrow">O problema</span>
       <h3 class="tit">Um relatório preso num tema de site</h3>
       <div class="prosa">
         <p>
@@ -262,7 +145,6 @@
     </section>
 
     <section>
-      <span class="eyebrow">O produto</span>
       <h3 class="tit">O relatório, tela a tela</h3>
       <figure>
         <div class="maquete" role="img" aria-label="Maquete do relatório com indicadores, gráfico semanal e tabela de campanhas, usando dados fictícios">
@@ -333,7 +215,6 @@
     </section>
 
     <section>
-      <span class="eyebrow">Decisões</span>
       <h3 class="tit">O que exigiu escolha</h3>
       <div class="lista">
         <div class="item"><h4>Link que não se adivinha</h4><p>O código do link é aleatório, com cerca de 49 bits, e não carrega informação: trocar uma letra não leva ao relatório de outro cliente. Os parâmetros são guardados no servidor e validados de novo ao abrir.</p></div>
@@ -348,10 +229,9 @@
   <!-- ═════════════════════════ PROJETO 2 ═════════════════════════ -->
   <article class="projeto" id="crm">
     <div class="abre">
-      <span class="eyebrow">Projeto 2 · Estudo de caso</span>
       <h2>CRM Privado</h2>
       <p class="lede">
-        Quem usa a ferramenta divide o dia entre a AAgência, a For People (mídia indoor) e a vida
+        Quem usa a ferramenta divide o dia entre a agência, um negócio de mídia indoor e a vida
         pessoal. Tudo começou como um protótipo em React que guardava dados só no
         navegador. Hoje é um produto em produção, com banco de dados, três áreas
         independentes e acesso pelo celular.
@@ -366,7 +246,6 @@
     </div>
 
     <section>
-      <span class="eyebrow">O ponto de partida</span>
       <h3 class="tit">Do localStorage para a produção</h3>
       <div class="prosa">
         <p>
@@ -390,13 +269,12 @@
     </section>
 
     <section>
-      <span class="eyebrow">O produto</span>
       <h3 class="tit">Três áreas que não se enxergam</h3>
       <div class="areas">
         <div class="area">
           <span class="rota">/tarefas</span>
           <h4>Jobs</h4>
-          <p>Tarefas do dia separadas em AAgência, For People e Pessoal.</p>
+          <p>Tarefas do dia separadas em Agência, Mídia indoor e Pessoal.</p>
           <ul>
             <li>Descrição, prazo e cor por tarefa</li>
             <li>Concluir esconde a tarefa, com "Desfazer" por 8 s</li>
@@ -406,18 +284,18 @@
         </div>
         <div class="area">
           <span class="rota">/crm</span>
-          <h4>CRM For People</h4>
+          <h4>CRM de mídia indoor</h4>
           <p>Vendas de mídia indoor, do primeiro contato ao fechamento.</p>
           <ul>
             <li>Kanban de 8 estágios com follow-up vencido</li>
             <li>Prospecção por segmento, promovida a lead em um clique</li>
             <li>Parque de telas instaladas por cliente</li>
           </ul>
-          <span class="chave">senha própria · marca For People</span>
+          <span class="chave">senha própria · marca própria</span>
         </div>
         <div class="area">
           <span class="rota">/planilha</span>
-          <h4>Agenda de mídia AAgência</h4>
+          <h4>Agenda de mídia da agência</h4>
           <p>A operação de tráfego pago que antes vivia num PDF.</p>
           <ul>
             <li>Central de pendências em tabela e kanban</li>
@@ -430,7 +308,6 @@
     </section>
 
     <section>
-      <span class="eyebrow">Decisões</span>
       <h3 class="tit">O que exigiu escolha</h3>
       <div class="lista">
         <div class="item"><h4>Isolamento real</h4><p>Cada área tem senha e cookie próprios. Nenhuma página revela a existência das outras, e a API de uma não responde com a sessão de outra.</p></div>
@@ -443,12 +320,11 @@
     </section>
 
     <section>
-      <span class="eyebrow">Resultado</span>
       <h3 class="tit">O que mudou na rotina</h3>
       <div class="prosa">
         <p>
           As tarefas passaram a acompanhar o usuário do computador ao celular, e o funil
-          de vendas ganhou um aviso de follow-up vencido. A operação de mídia da AAgência
+          de vendas ganhou um aviso de follow-up vencido. A operação de mídia da agência
           saiu de um PDF para um painel onde o saldo de cada conta se atualiza sozinho.
         </p>
         <p class="secundario">
@@ -459,7 +335,6 @@
   </article>
 
   <div class="nota">
-    <span class="eyebrow">Sobre os exemplos</span>
     <p>
       A maquete e os exemplos desta página usam <strong>dados fictícios</strong>: nenhum
       cliente, valor, conta de anúncio ou contato real aparece aqui.
@@ -472,4 +347,12 @@
 
 </div>
 
+<script>
+(function(){var r=document.documentElement,b=document.getElementById('tema'),D='dark';
+function cur(){return r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function paint(){b.textContent=cur()==='dark'?'\u{1F319} Dark':'\u2600\uFE0F Light'}
+var t=null;try{t=localStorage.getItem('theme')}catch(e){}
+t=t||D;if(t)r.dataset.theme=t;paint();
+b.onclick=function(){var n=cur()==='dark'?'light':'dark';r.dataset.theme=n;try{localStorage.setItem('theme',n)}catch(e){}paint()}})();
+</script>
 </body></html>

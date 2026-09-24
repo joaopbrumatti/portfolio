@@ -1,47 +1,119 @@
-<section class="relative flex min-h-[80svh] flex-col border-b border-black/20">
-  <div class="absolute top-0 left-0 w-8 h-8 lg:w-12 lg:h-12 border-t-2 border-l-2 border-black/40"></div>
-  <div class="absolute top-0 right-0 w-8 h-8 lg:w-12 lg:h-12 border-t-2 border-r-2 border-black/40"></div>
-  <div class="absolute bottom-[41px] left-0 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-l-2 border-black/40"></div>
-  <div class="absolute bottom-[41px] right-0 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-r-2 border-black/40"></div>
+---
+---
 
-  <div class="flex flex-1 items-center py-16">
-    <div class="w-full max-w-4xl mx-auto px-6">
-      <div class="max-w-xl">
-        <div class="flex items-center gap-2 mb-4 opacity-60">
-          <div class="w-8 h-px bg-black"></div>
+<section class="relative flex min-h-screen flex-col overflow-hidden bg-black text-white">
+  <!-- Animação de fundo (desktop) -->
+  <div class="absolute inset-0 hidden lg:block" aria-hidden="true">
+    <div
+      data-us-project="whwOGlfJ5Rz2rHaEUgHl"
+      style="width:100%;height:100%;min-height:100vh;pointer-events:none"
+    >
+    </div>
+  </div>
+
+  <!-- Estrelas (mobile) -->
+  <div class="absolute inset-0 lg:hidden stars-bg" aria-hidden="true"></div>
+
+  <!-- Cantos -->
+  <div class="absolute top-0 left-0 z-20 w-8 h-8 lg:w-12 lg:h-12 border-t-2 border-l-2 border-white/30"></div>
+  <div class="absolute top-0 right-0 z-20 w-8 h-8 lg:w-12 lg:h-12 border-t-2 border-r-2 border-white/30"></div>
+  <div class="absolute bottom-[45px] left-0 z-20 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-l-2 border-white/30"></div>
+  <div class="absolute bottom-[45px] right-0 z-20 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-r-2 border-white/30"></div>
+
+  <!-- Topo -->
+  <div class="relative z-20 border-b border-white/20">
+    <div class="max-w-6xl mx-auto px-4 lg:px-8 py-3 lg:py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2 lg:gap-4">
+        <span class="text-xl lg:text-2xl font-bold tracking-widest italic -skew-x-12">JPB</span>
+        <span class="h-3 lg:h-4 w-px bg-white/40"></span>
+        <span class="hidden sm:inline text-[8px] lg:text-[10px] text-white/60 tracking-wider">DESENVOLVEDOR WEB</span>
+      </div>
+      <nav class="flex gap-5 text-[10px] lg:text-xs tracking-wider text-white/70">
+        <a href="#projetos" class="hover:text-white">PROJETOS</a>
+        <a href="#contato" class="hover:text-white">CONTATO</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="relative z-10 flex flex-1 items-center py-16">
+    <div class="w-full max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="max-w-lg relative">
+        <div class="flex items-center gap-2 mb-3 opacity-60">
+          <div class="w-8 h-px bg-white"></div>
           <span class="text-[10px] tracking-wider">001</span>
-          <div class="flex-1 h-px bg-black"></div>
+          <div class="flex-1 h-px bg-white"></div>
         </div>
 
         <div class="relative">
-          <div class="hidden lg:block absolute -left-4 top-0 bottom-0 w-1 dither opacity-30"></div>
-          <h1 class="text-2xl lg:text-5xl font-bold leading-tight tracking-wider mb-4">
+          <div class="hidden lg:block absolute -left-3 top-0 bottom-0 w-1 dither-w opacity-40"></div>
+          <h1 class="text-2xl lg:text-5xl font-bold leading-tight mb-3 lg:mb-4" style="letter-spacing:0.1em">
             JOÃO
-            <span class="block mt-1 lg:mt-2 text-accent">PINHEIRO BRUMATTI</span>
+            <span class="block mt-1 lg:mt-2 text-[#44D62C]">PINHEIRO BRUMATTI</span>
           </h1>
         </div>
 
-        <p class="text-xs lg:text-sm text-black/70 leading-relaxed mb-6">
+        <p class="text-xs lg:text-base text-white/70 mb-5 lg:mb-6 leading-relaxed">
           Estudante da UFRN e desenvolvedor web. Crio sites e aplicações sob
           medida, além de ferramentas internas para negócios, como painéis de
           relatórios e CRMs.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-3">
-          <a href="#projetos" class="px-6 py-2.5 border border-black text-xs text-center hover:bg-black hover:text-white transition-colors duration-200">VER PROJETOS</a>
-          <a href="#contato" class="px-6 py-2.5 border border-black text-xs text-center hover:bg-black hover:text-white transition-colors duration-200">CONTATO</a>
+        <div class="flex flex-col lg:flex-row gap-3 lg:gap-4">
+          <a href="#projetos" class="px-5 lg:px-6 py-2 lg:py-2.5 border border-white text-xs lg:text-sm text-center hover:bg-white hover:text-black transition-colors duration-200">VER PROJETOS</a>
+          <a href="#contato" class="px-5 lg:px-6 py-2 lg:py-2.5 border border-white text-xs lg:text-sm text-center hover:bg-white hover:text-black transition-colors duration-200">CONTATO</a>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="border-t border-black/20">
-    <div class="max-w-4xl mx-auto px-6 py-3 flex items-center justify-between gap-4 text-[9px] lg:text-[10px] text-black/60 tracking-wider">
+  <!-- Rodapé -->
+  <div class="relative z-20 border-t border-white/20 bg-black/40 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-4 lg:px-8 py-2 lg:py-3 flex items-center justify-between gap-4 text-[8px] lg:text-[10px] text-white/60 tracking-wider">
       <span class="flex items-center gap-2">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#44D62C] animate-pulse"></span>
         DISPONÍVEL PARA FREELANCE
       </span>
       <span class="hidden sm:inline">ASTRO · REACT · TYPESCRIPT · PHP</span>
     </div>
   </div>
 </section>
+
+<style>
+  .dither-w {
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 1px, #fff 1px 2px),
+      repeating-linear-gradient(90deg, transparent 0 1px, #fff 1px 2px);
+    background-size: 3px 3px;
+  }
+  .stars-bg {
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, white, transparent),
+      radial-gradient(1px 1px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(1px 1px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 60%, white, transparent),
+      radial-gradient(1px 1px at 70% 40%, white, transparent);
+    background-size: 200% 200%, 180% 180%, 250% 250%, 220% 220%, 190% 190%, 240% 240%, 210% 210%, 230% 230%;
+    background-position: 0% 0%, 40% 40%, 60% 60%, 20% 20%, 80% 80%, 30% 30%, 70% 70%, 50% 50%;
+    opacity: 0.3;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    if (window.UnicornStudio) return;
+    window.UnicornStudio = { isInitialized: false };
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.33/dist/unicornStudio.umd.js';
+    s.onload = function () {
+      if (!window.UnicornStudio.isInitialized) {
+        UnicornStudio.init();
+        window.UnicornStudio.isInitialized = true;
+      }
+    };
+    document.head.appendChild(s);
+  })();
+</script>

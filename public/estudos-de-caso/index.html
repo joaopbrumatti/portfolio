@@ -1,6 +1,9 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.lang-toggle{display:inline-flex;align-items:center;gap:6px}.lang-toggle button{display:block;padding:2px;border:1px solid transparent;background:none;cursor:pointer;opacity:.45;line-height:0;transition:opacity .2s,border-color .2s}.lang-toggle button:hover{opacity:.85}.lang-toggle button[aria-pressed="true"]{opacity:1;border-color:#000}.lang-toggle svg{display:block;width:24px;height:17px}.lg-en{display:none}html[data-lang="en"] .lg-pt{display:none}html[data-lang="en"] .lg-en{display:inline}
+</style>
+<title data-en="Dashboard Report and Private CRM">Relatório Dashboard e CRM Privado</title>
+<script src="/lang.js"></script>
+</head><body>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap">
-<title>Relatório Dashboard e CRM Privado</title>
 <style>
 :root{--accent:#44D62C;--ink:#000;--muted:rgba(0,0,0,.72);--faint:rgba(0,0,0,.5);--card:rgba(0,0,0,.02);--line:rgba(68,214,44,.3);--acc-t:#1f8a10;--up:#1f8a10;--down:#c0392b;--da:#fff;--code:rgba(68,214,44,.14)}
 *{box-sizing:border-box}
@@ -78,270 +81,229 @@ figcaption{font-size:13px;color:var(--faint)}
 .rodape{border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--faint)}
 @media (max-width:640px){.item{grid-template-columns:1fr;gap:6px}.page{gap:44px}}
 </style>
-
 <div class="page">
-
-  <header class="topo">
-    <a class="nome" href="/">João <span>Pinheiro Brumatti</span></a>
-    <div class="acoes"><a href="/#projetos">← Voltar</a></div>
-  </header>
-
-  <header class="capa">
-    <h1>Relatório Dashboard e CRM Privado</h1>
-    <p class="lede">
-      Duas ferramentas feitas sob medida para quem opera mídia todos os dias. Uma
-      entrega ao cliente o resultado dos anúncios. A outra organiza o dia de quem vende
-      e acompanha esses clientes.
-    </p>
-    <nav class="indice" aria-label="Projetos">
-      <a href="#relatorio">
-        <strong>Relatório Dashboard</strong>
-        <span>Relatório de Meta Ads, Google Ads e GA4 por cliente, com link público para compartilhar.</span>
-      </a>
-      <a href="#crm">
-        <strong>CRM Privado</strong>
-        <span>Tarefas, CRM de vendas e painel da operação de mídia, em áreas com senha própria.</span>
-      </a>
-    </nav>
-  </header>
-
-  <!-- ═════════════════════════ PROJETO 1 ═════════════════════════ -->
-  <article class="projeto" id="relatorio">
-    <div class="abre">
-      <h2>Relatório Dashboard</h2>
-      <p class="lede">
-        A agência atende cerca de 70 clientes, e todo mês cada um espera saber o que o
-        investimento em anúncios rendeu. O relatório existia num tema de WordPress em PHP.
-        Ele foi reescrito como módulo do painel interno: escolhe o cliente e o período, e
-        sai um relatório pronto para mandar.
-      </p>
-      <div class="ficha">
-        <div><span class="rot">Papel</span><span class="val">Desenvolvimento integral do módulo</span></div>
-        <div><span class="rot">Período</span><span class="val">Ago – set / 2026</span></div>
-        <div><span class="rot">Stack</span><span class="val">Next.js 15 · React 19 · TypeScript</span></div>
-        <div><span class="rot">Dados</span><span class="val">Graph API da Meta · GA4 · Neon</span></div>
-        <div><span class="rot">Cache</span><span class="val">Cloudflare KV</span></div>
-      </div>
-    </div>
-
-    <section>
-      <h3 class="tit">Um relatório preso num tema de site</h3>
-      <div class="prosa">
-        <p>
-          A versão antiga funcionava, mas morava dentro de um tema WordPress, com as
-          chaves de acesso às contas de anúncio gravadas em arquivos do próprio tema. Mexer
-          nela era arriscado, e cada relatório compartilhado dependia de alguém da equipe
-          abrir e mandar print.
-        </p>
-        <p class="secundario">
-          A reescrita partiu de uma regra: nenhuma credencial do código antigo seria lida,
-          copiada nem reaproveitada. O acesso novo nasce do zero, fica só no servidor e não
-          aparece em log.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <h3 class="tit">O relatório, tela a tela</h3>
-      <figure>
-        <div class="maquete" role="img" aria-label="Maquete do relatório com indicadores, gráfico semanal e tabela de campanhas, usando dados fictícios">
-          <div class="maq-topo">
-            <strong>Padaria Exemplo · Foco: mensagem</strong>
-            <span>01/08 – 31/08 vs. 01/07 – 31/07</span>
-          </div>
-          <div class="kpis">
-            <div class="kpi"><span class="rot">Investido</span><span class="v">R$ 2.480</span><span class="d up">+12,4%</span></div>
-            <div class="kpi"><span class="rot">Conversas</span><span class="v">318</span><span class="d up">+21,8%</span></div>
-            <div class="kpi"><span class="rot">Custo por conversa</span><span class="v">R$ 7,80</span><span class="d up">−7,7%</span></div>
-            <div class="kpi"><span class="rot">Alcance</span><span class="v">41.920</span><span class="d down">−3,1%</span></div>
-          </div>
-          <div class="grafico">
-            <svg viewBox="0 0 640 170" aria-hidden="true">
-              <g stroke="var(--rule)" stroke-width="1">
-                <line x1="40" y1="20" x2="630" y2="20"></line>
-                <line x1="40" y1="70" x2="630" y2="70"></line>
-                <line x1="40" y1="120" x2="630" y2="120"></line>
-              </g>
-              <text x="32" y="24" text-anchor="end">100</text>
-              <text x="32" y="74" text-anchor="end">50</text>
-              <text x="32" y="124" text-anchor="end">0</text>
-              <g fill="var(--bar)">
-                <rect x="70" y="72" width="70" height="48" rx="2"></rect>
-                <rect x="190" y="58" width="70" height="62" rx="2"></rect>
-                <rect x="310" y="45" width="70" height="75" rx="2"></rect>
-                <rect x="430" y="36" width="70" height="84" rx="2"></rect>
-                <rect x="550" y="96" width="70" height="24" rx="2"></rect>
-              </g>
-              <polyline fill="none" stroke="var(--accent)" stroke-width="2.5" points="105,82 225,64 345,50 465,40 585,104"></polyline>
-              <g fill="var(--accent)">
-                <circle cx="105" cy="82" r="3.5"></circle><circle cx="225" cy="64" r="3.5"></circle>
-                <circle cx="345" cy="50" r="3.5"></circle><circle cx="465" cy="40" r="4.5"></circle>
-                <circle cx="585" cy="104" r="3.5"></circle>
-              </g>
-              <text x="105" y="142" text-anchor="middle">sem 1</text>
-              <text x="225" y="142" text-anchor="middle">sem 2</text>
-              <text x="345" y="142" text-anchor="middle">sem 3</text>
-              <text x="465" y="142" text-anchor="middle">sem 4</text>
-              <text x="585" y="142" text-anchor="middle">sem 5</text>
-              <text x="40" y="164">barras: conversas · linha: sessões no site (GA4)</text>
-            </svg>
-          </div>
-          <div class="tabela-wrap">
-            <table>
-              <thead><tr><th>Campanha</th><th class="n">Investido</th><th class="n">Resultado</th><th class="n">Custo</th></tr></thead>
-              <tbody>
-                <tr><td>Cardápio de agosto</td><td class="n">R$ 1.520</td><td class="n">204 conversas</td><td class="n">R$ 7,45</td></tr>
-                <tr class="sub"><td>Público do bairro</td><td class="n">R$ 910</td><td class="n">131</td><td class="n">R$ 6,95</td></tr>
-                <tr class="sub"><td>Semelhante a clientes</td><td class="n">R$ 610</td><td class="n">73</td><td class="n">R$ 8,36</td></tr>
-                <tr><td>Café da manhã</td><td class="n">R$ 960</td><td class="n">114 conversas</td><td class="n">R$ 8,42</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <figcaption>Maquete com dados fictícios. Reproduz a estrutura do relatório real: indicadores com variação, gráfico de anúncios e site, e campanhas abertas por conjunto de anúncios.</figcaption>
-      </figure>
-
-      <div class="lista">
-        <div class="item"><h4>Quatro focos</h4><p>Cada cliente tem um objetivo: alcance, compras, cadastro ou mensagem. O foco escolhe quais indicadores aparecem nos cartões e qual métrica o gráfico desenha. A métrica de cada campanha segue o objetivo de otimização configurado na Meta.</p></div>
-        <div class="item"><h4>Comparação de períodos</h4><p>Com um período anterior escolhido, todo indicador mostra a variação percentual colorida pelo sentido certo: custo que cai é verde, alcance que cai é vermelho.</p></div>
-        <div class="item"><h4>Site ao lado dos anúncios</h4><p>Um segundo gráfico traz dados do Google Analytics 4, lidos por uma conta de serviço. O que entra depende do foco: sessões, compras, cadastros ou cliques no WhatsApp.</p></div>
-        <div class="item"><h4>Google Ads por planilha</h4><p>A equipe sobe o CSV exportado do Google Ads e ele vira uma seção do relatório. O leitor aceita o formato brasileiro: separador <code>;</code>, preâmbulo, linha de total e BOM.</p></div>
-        <div class="item"><h4>Saldo das contas</h4><p>Cartão de saldo no relatório e uma página <code>/saldos</code> com todas as contas, para a equipe ver quem está perto de parar antes do cliente perceber.</p></div>
-        <div class="item"><h4>Link para o cliente</h4><p>Um clique gera um endereço curto <code>/r/&lt;código&gt;</code> que abre o relatório sem login. Uma tela lista os links emitidos e permite revogar cada um.</p></div>
-      </div>
-    </section>
-
-    <section>
-      <h3 class="tit">O que exigiu escolha</h3>
-      <div class="lista">
-        <div class="item"><h4>Link que não se adivinha</h4><p>O código do link é aleatório, com cerca de 49 bits, e não carrega informação: trocar uma letra não leva ao relatório de outro cliente. Os parâmetros são guardados no servidor e validados de novo ao abrir.</p></div>
-        <div class="item"><h4>Cache que nunca derruba</h4><p>As respostas da Meta e do GA4 ficam no KV. Um período já encerrado vale 24 horas; um período que inclui hoje, 10 minutos. Se o cache falhar, a consulta segue direto para a API, sem página de erro.</p></div>
-        <div class="item"><h4>Sessão assinada</h4><p>O login antigo gravava a própria senha num cookie legível pelo navegador. Isso saiu. Agora o cookie carrega um token HMAC que expira em 12 horas, com <code>HttpOnly</code> e <code>SameSite=Strict</code>, e o login tem limite de tentativas.</p></div>
-        <div class="item"><h4>Toda ação checa sessão</h4><p>Toda Server Action chama <code>requireAuth()</code> antes de tocar no banco. Ela é um POST endereçável e poderia ser chamada a partir de uma rota aberta, como o login.</p></div>
-        <div class="item"><h4>Deploy que avisa antes</h4><p>Um preflight de variáveis roda antes de cada build e trava se faltar segredo. Os erros que só apareceriam em produção, como a rota agendada devolvendo 503, viram falha de build.</p></div>
-      </div>
-    </section>
-  </article>
-
-  <!-- ═════════════════════════ PROJETO 2 ═════════════════════════ -->
-  <article class="projeto" id="crm">
-    <div class="abre">
-      <h2>CRM Privado</h2>
-      <p class="lede">
-        Quem usa a ferramenta divide o dia entre a agência, um negócio de mídia indoor e a vida
-        pessoal. Tudo começou como um protótipo em React que guardava dados só no
-        navegador. Hoje é um produto em produção, com banco de dados, três áreas
-        independentes e acesso pelo celular.
-      </p>
-      <div class="ficha">
-        <div><span class="rot">Papel</span><span class="val">Desenvolvimento integral</span></div>
-        <div><span class="rot">Período</span><span class="val">Ago – set / 2026</span></div>
-        <div><span class="rot">Stack</span><span class="val">TypeScript · Hono · Drizzle</span></div>
-        <div><span class="rot">Infra</span><span class="val">Cloudflare Workers · Neon</span></div>
-        <div><span class="rot">Estado</span><span class="val">Em produção</span></div>
-      </div>
-    </div>
-
-    <section>
-      <h3 class="tit">Do localStorage para a produção</h3>
-      <div class="prosa">
-        <p>
-          A versão 2.0 do protótipo já tinha a ideia certa: lista de tarefas por frente de
-          trabalho, funil de leads e exportação em CSV. Mas tudo morava no
-          <code>localStorage</code>. Trocar de computador significava perder os dados, e o
-          celular não via nada.
-        </p>
-        <p class="secundario">
-          A reescrita manteve a lógica que já estava em uso e trocou a base: API num
-          Worker, Postgres serverless e uma tela que funciona no toque. Depois disso o
-          produto cresceu por pedidos dele e da equipe.
-        </p>
-      </div>
-      <div class="numeros">
-        <div><span class="n">3</span><span class="rot">Áreas com senha própria</span></div>
-        <div><span class="n">8</span><span class="rot">Estágios do funil</span></div>
-        <div><span class="n">39</span><span class="rot">Clientes de mídia importados</span></div>
-        <div><span class="n">7</span><span class="rot">Tabelas da operação de mídia</span></div>
-      </div>
-    </section>
-
-    <section>
-      <h3 class="tit">Três áreas que não se enxergam</h3>
-      <div class="areas">
-        <div class="area">
-          <span class="rota">/tarefas</span>
-          <h4>Jobs</h4>
-          <p>Tarefas do dia separadas em Agência, Mídia indoor e Pessoal.</p>
-          <ul>
-            <li>Descrição, prazo e cor por tarefa</li>
-            <li>Concluir esconde a tarefa, com "Desfazer" por 8 s</li>
-            <li>Ordem com setas no celular</li>
-          </ul>
-          <span class="chave">senha própria · não leva ao CRM</span>
-        </div>
-        <div class="area">
-          <span class="rota">/crm</span>
-          <h4>CRM de mídia indoor</h4>
-          <p>Vendas de mídia indoor, do primeiro contato ao fechamento.</p>
-          <ul>
-            <li>Kanban de 8 estágios com follow-up vencido</li>
-            <li>Prospecção por segmento, promovida a lead em um clique</li>
-            <li>Parque de telas instaladas por cliente</li>
-          </ul>
-          <span class="chave">senha própria · marca própria</span>
-        </div>
-        <div class="area">
-          <span class="rota">/planilha</span>
-          <h4>Agenda de mídia da agência</h4>
-          <p>A operação de tráfego pago que antes vivia num PDF.</p>
-          <ul>
-            <li>Central de pendências em tabela e kanban</li>
-            <li>Saldo das contas lido da Meta</li>
-            <li>Recarga lançada colando a mensagem crua</li>
-          </ul>
-          <span class="chave">senha própria · cookie <code>__Host-</code> por área</span>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h3 class="tit">O que exigiu escolha</h3>
-      <div class="lista">
-        <div class="item"><h4>Isolamento real</h4><p>Cada área tem senha e cookie próprios. Nenhuma página revela a existência das outras, e a API de uma não responde com a sessão de outra.</p></div>
-        <div class="item"><h4>Nada derivado no banco</h4><p>"Atrasada", faixa de saldo e situação do cliente são calculados na leitura, a partir das datas. Um status gravado precisaria de alguém atualizando à meia-noite; um calculado nunca fica desencontrado.</p></div>
-        <div class="item"><h4>Saldo da Meta sem falso zero</h4><p>O saldo é o limite de gasto menos o valor já gasto. Conta sem limite definido não grava nada, porque um zero ali marcaria como esgotada justamente a conta que pode gastar à vontade. Cada sobrescrita guarda o valor anterior no histórico.</p></div>
-        <div class="item"><h4>Bloqueio de login no banco</h4><p>Três erros em 30 minutos travam a origem, e um freio global fecha o login sob ataque distribuído. O IP entra só como HMAC truncado: o histórico conta tentativas sem registrar quem acessou de onde.</p></div>
-        <div class="item"><h4>CSP sem <code>unsafe-inline</code></h4><p>Nenhum script ou estilo inline. Os eventos entram por delegação, e a cor escolhida para cada tarefa é aplicada via CSSOM.</p></div>
-        <div class="item"><h4>Migrações aditivas</h4><p>Cada mudança de schema é um script idempotente que só acrescenta. Uma tabela em produção nunca é recriada por engano.</p></div>
-      </div>
-    </section>
-
-    <section>
-      <h3 class="tit">O que mudou na rotina</h3>
-      <div class="prosa">
-        <p>
-          As tarefas passaram a acompanhar o usuário do computador ao celular, e o funil
-          de vendas ganhou um aviso de follow-up vencido. A operação de mídia da agência
-          saiu de um PDF para um painel onde o saldo de cada conta se atualiza sozinho.
-        </p>
-        <p class="secundario">
-          Tudo roda num único Worker com banco serverless, sem servidor para manter.
-        </p>
-      </div>
-    </section>
-  </article>
-
-  <div class="nota">
-    <p>
-      A maquete e os exemplos desta página usam <strong>dados fictícios</strong>: nenhum
-      cliente, valor, conta de anúncio ou contato real aparece aqui.
-    </p>
-  </div>
-
-  <footer class="rodape">
-    João Pinheiro Brumatti · Desenvolvimento de produto · 2026
-  </footer>
-
+<header class="topo">
+<a class="nome" href="/">João <span>Pinheiro Brumatti</span></a>
+<div class="acoes"><div class="lang-toggle" role="group" aria-label="Idioma / Language"><button type="button" data-lang-btn="pt" aria-pressed="true" aria-label="Português" title="Português"><svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" fill="#009c3b"/><polygon points="14,2 25.5,10 14,18 2.5,10" fill="#ffdf00"/><circle cx="14" cy="10" r="4.6" fill="#002776"/></svg></button><button type="button" data-lang-btn="en" aria-pressed="false" aria-label="English" title="English"><svg viewBox="0 0 60 40" aria-hidden="true"><rect width="60" height="40" fill="#012169"/><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#C8102E" stroke-width="2.6"/><path d="M30,0V40M0,20H60" stroke="#fff" stroke-width="13"/><path d="M30,0V40M0,20H60" stroke="#C8102E" stroke-width="7.5"/></svg></button></div><a href="/"><span class="lg-pt">← Voltar</span><span class="lg-en">← Back</span></a></div>
+</header>
+<header class="capa">
+<h1><span class="lg-pt">Relatório Dashboard e CRM Privado</span><span class="lg-en">Dashboard Report and Private CRM</span></h1>
+<p class="lede"><span class="lg-pt">Duas ferramentas feitas sob medida para quem opera mídia todos os dias. Uma
+entrega ao cliente o resultado dos anúncios. A outra organiza o dia de quem vende
+e acompanha esses clientes.</span><span class="lg-en">Two custom-built tools for people who run media every day. One delivers ad results to the client. The other organizes the day of whoever sells to and follows up with those clients.</span></p>
+<nav class="indice" aria-label="Projetos" data-aria-en="Projects">
+<a href="#relatorio">
+<strong><span class="lg-pt">Relatório Dashboard</span><span class="lg-en">Dashboard Report</span></strong>
+<span><span class="lg-pt">Relatório de Meta Ads, Google Ads e GA4 por cliente, com link público para compartilhar.</span><span class="lg-en">Meta Ads, Google Ads and GA4 report per client, with a public link to share.</span></span>
+</a>
+<a href="#crm">
+<strong><span class="lg-pt">CRM Privado</span><span class="lg-en">Private CRM</span></strong>
+<span><span class="lg-pt">Tarefas, CRM de vendas e painel da operação de mídia, em áreas com senha própria.</span><span class="lg-en">Tasks, sales CRM and a media operations panel, in separate password-protected areas.</span></span>
+</a>
+</nav>
+</header>
+<article class="projeto" id="relatorio">
+<div class="abre">
+<h2><span class="lg-pt">Relatório Dashboard</span><span class="lg-en">Dashboard Report</span></h2>
+<p class="lede"><span class="lg-pt">A agência atende cerca de 70 clientes, e todo mês cada um espera saber o que o
+investimento em anúncios rendeu. O relatório existia num tema de WordPress em PHP.
+Ele foi reescrito como módulo do painel interno: escolhe o cliente e o período, e
+sai um relatório pronto para mandar.</span><span class="lg-en">The agency serves about 70 clients, and every month each one expects to know what their ad spend returned. The report lived in a PHP WordPress theme. It was rewritten as a module of the internal panel: pick the client and the period, and a report comes out ready to send.</span></p>
+<div class="ficha">
+<div><span class="rot"><span class="lg-pt">Papel</span><span class="lg-en">Role</span></span><span class="val"><span class="lg-pt">Desenvolvimento integral do módulo</span><span class="lg-en">Full development of the module</span></span></div>
+<div><span class="rot"><span class="lg-pt">Período</span><span class="lg-en">Period</span></span><span class="val"><span class="lg-pt">Ago – set / 2026</span><span class="lg-en">Aug – Sep / 2026</span></span></div>
+<div><span class="rot">Stack</span><span class="val">Next.js 15 · React 19 · TypeScript</span></div>
+<div><span class="rot"><span class="lg-pt">Dados</span><span class="lg-en">Data</span></span><span class="val"><span class="lg-pt">Graph API da Meta · GA4 · Neon</span><span class="lg-en">Meta Graph API · GA4 · Neon</span></span></div>
+<div><span class="rot">Cache</span><span class="val">Cloudflare KV</span></div>
 </div>
-
+</div>
+<section>
+<h3 class="tit"><span class="lg-pt">Um relatório preso num tema de site</span><span class="lg-en">A report stuck inside a site theme</span></h3>
+<div class="prosa">
+<p><span class="lg-pt">A versão antiga funcionava, mas morava dentro de um tema WordPress, com as
+chaves de acesso às contas de anúncio gravadas em arquivos do próprio tema. Mexer
+nela era arriscado, e cada relatório compartilhado dependia de alguém da equipe
+abrir e mandar print.</span><span class="lg-en">The old version worked, but it lived inside a WordPress theme, with the ad account access keys stored in the theme's own files. Changing it was risky, and every shared report depended on someone on the team opening it and sending a screenshot.</span></p>
+<p class="secundario"><span class="lg-pt">A reescrita partiu de uma regra: nenhuma credencial do código antigo seria lida,
+copiada nem reaproveitada. O acesso novo nasce do zero, fica só no servidor e não
+aparece em log.</span><span class="lg-en">The rewrite started from one rule: no credential from the old code would be read, copied or reused. The new access is created from scratch, stays on the server only and never appears in logs.</span></p>
+</div>
+</section>
+<section>
+<h3 class="tit"><span class="lg-pt">O relatório, tela a tela</span><span class="lg-en">The report, screen by screen</span></h3>
+<figure>
+<div class="maquete" role="img" aria-label="Maquete do relatório com indicadores, gráfico semanal e tabela de campanhas, usando dados fictícios" data-aria-en="Report mockup with indicators, a weekly chart and a campaigns table, using fictitious data">
+<div class="maq-topo">
+<strong><span class="lg-pt">Padaria Exemplo · Foco: mensagem</span><span class="lg-en">Example Bakery · Focus: messages</span></strong>
+<span><span class="lg-pt">01/08 – 31/08 vs. 01/07 – 31/07</span><span class="lg-en">Aug 1 – Aug 31 vs. Jul 1 – Jul 31</span></span>
+</div>
+<div class="kpis">
+<div class="kpi"><span class="rot"><span class="lg-pt">Investido</span><span class="lg-en">Spend</span></span><span class="v">R$ 2.480</span><span class="d up">+12,4%</span></div>
+<div class="kpi"><span class="rot"><span class="lg-pt">Conversas</span><span class="lg-en">Conversations</span></span><span class="v">318</span><span class="d up">+21,8%</span></div>
+<div class="kpi"><span class="rot"><span class="lg-pt">Custo por conversa</span><span class="lg-en">Cost per conversation</span></span><span class="v">R$ 7,80</span><span class="d up">−7,7%</span></div>
+<div class="kpi"><span class="rot"><span class="lg-pt">Alcance</span><span class="lg-en">Reach</span></span><span class="v">41.920</span><span class="d down">−3,1%</span></div>
+</div>
+<div class="grafico">
+<svg viewBox="0 0 640 170" aria-hidden="true">
+<g stroke="var(--rule)" stroke-width="1">
+<line x1="40" y1="20" x2="630" y2="20"></line>
+<line x1="40" y1="70" x2="630" y2="70"></line>
+<line x1="40" y1="120" x2="630" y2="120"></line>
+</g>
+<text x="32" y="24" text-anchor="end">100</text>
+<text x="32" y="74" text-anchor="end">50</text>
+<text x="32" y="124" text-anchor="end">0</text>
+<g fill="var(--bar)">
+<rect x="70" y="72" width="70" height="48" rx="2"></rect>
+<rect x="190" y="58" width="70" height="62" rx="2"></rect>
+<rect x="310" y="45" width="70" height="75" rx="2"></rect>
+<rect x="430" y="36" width="70" height="84" rx="2"></rect>
+<rect x="550" y="96" width="70" height="24" rx="2"></rect>
+</g>
+<polyline fill="none" stroke="var(--accent)" stroke-width="2.5" points="105,82 225,64 345,50 465,40 585,104"></polyline>
+<g fill="var(--accent)">
+<circle cx="105" cy="82" r="3.5"></circle><circle cx="225" cy="64" r="3.5"></circle>
+<circle cx="345" cy="50" r="3.5"></circle><circle cx="465" cy="40" r="4.5"></circle>
+<circle cx="585" cy="104" r="3.5"></circle>
+</g>
+<text x="105" y="142" text-anchor="middle"><tspan class="lg-pt">sem 1</tspan><tspan class="lg-en">wk 1</tspan></text>
+<text x="225" y="142" text-anchor="middle"><tspan class="lg-pt">sem 2</tspan><tspan class="lg-en">wk 2</tspan></text>
+<text x="345" y="142" text-anchor="middle"><tspan class="lg-pt">sem 3</tspan><tspan class="lg-en">wk 3</tspan></text>
+<text x="465" y="142" text-anchor="middle"><tspan class="lg-pt">sem 4</tspan><tspan class="lg-en">wk 4</tspan></text>
+<text x="585" y="142" text-anchor="middle"><tspan class="lg-pt">sem 5</tspan><tspan class="lg-en">wk 5</tspan></text>
+<text x="40" y="164"><tspan class="lg-pt">barras: conversas · linha: sessões no site (GA4)</tspan><tspan class="lg-en">bars: conversations · line: site sessions (GA4)</tspan></text>
+</svg>
+</div>
+<div class="tabela-wrap">
+<table>
+<thead><tr><th><span class="lg-pt">Campanha</span><span class="lg-en">Campaign</span></th><th class="n"><span class="lg-pt">Investido</span><span class="lg-en">Spend</span></th><th class="n"><span class="lg-pt">Resultado</span><span class="lg-en">Result</span></th><th class="n"><span class="lg-pt">Custo</span><span class="lg-en">Cost</span></th></tr></thead>
+<tbody>
+<tr><td><span class="lg-pt">Cardápio de agosto</span><span class="lg-en">August menu</span></td><td class="n">R$ 1.520</td><td class="n"><span class="lg-pt">204 conversas</span><span class="lg-en">204 conversations</span></td><td class="n">R$ 7,45</td></tr>
+<tr class="sub"><td><span class="lg-pt">Público do bairro</span><span class="lg-en">Neighborhood audience</span></td><td class="n">R$ 910</td><td class="n">131</td><td class="n">R$ 6,95</td></tr>
+<tr class="sub"><td><span class="lg-pt">Semelhante a clientes</span><span class="lg-en">Lookalike of customers</span></td><td class="n">R$ 610</td><td class="n">73</td><td class="n">R$ 8,36</td></tr>
+<tr><td><span class="lg-pt">Café da manhã</span><span class="lg-en">Breakfast</span></td><td class="n">R$ 960</td><td class="n"><span class="lg-pt">114 conversas</span><span class="lg-en">114 conversations</span></td><td class="n">R$ 8,42</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<figcaption><span class="lg-pt">Maquete com dados fictícios. Reproduz a estrutura do relatório real: indicadores com variação, gráfico de anúncios e site, e campanhas abertas por conjunto de anúncios.</span><span class="lg-en">Mockup with fictitious data. It reproduces the structure of the real report: indicators with change, an ads and site chart, and campaigns broken down by ad set.</span></figcaption>
+</figure>
+<div class="lista">
+<div class="item"><h4><span class="lg-pt">Quatro focos</span><span class="lg-en">Four focuses</span></h4><p><span class="lg-pt">Cada cliente tem um objetivo: alcance, compras, cadastro ou mensagem. O foco escolhe quais indicadores aparecem nos cartões e qual métrica o gráfico desenha. A métrica de cada campanha segue o objetivo de otimização configurado na Meta.</span><span class="lg-en">Each client has one goal: reach, purchases, sign-ups or messages. The focus picks which indicators show up on the cards and which metric the chart draws. Each campaign's metric follows the optimization goal configured in Meta.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Comparação de períodos</span><span class="lg-en">Period comparison</span></h4><p><span class="lg-pt">Com um período anterior escolhido, todo indicador mostra a variação percentual colorida pelo sentido certo: custo que cai é verde, alcance que cai é vermelho.</span><span class="lg-en">With a previous period selected, every indicator shows the percentage change colored by the right direction: cost going down is green, reach going down is red.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Site ao lado dos anúncios</span><span class="lg-en">Site next to the ads</span></h4><p><span class="lg-pt">Um segundo gráfico traz dados do Google Analytics 4, lidos por uma conta de serviço. O que entra depende do foco: sessões, compras, cadastros ou cliques no WhatsApp.</span><span class="lg-en">A second chart brings Google Analytics 4 data, read through a service account. What shows up depends on the focus: sessions, purchases, sign-ups or WhatsApp clicks.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Google Ads por planilha</span><span class="lg-en">Google Ads via spreadsheet</span></h4><p><span class="lg-pt">A equipe sobe o CSV exportado do Google Ads e ele vira uma seção do relatório. O leitor aceita o formato brasileiro: separador <code>;</code>, preâmbulo, linha de total e BOM.</span><span class="lg-en">The team uploads the CSV exported from Google Ads and it becomes a section of the report. The parser accepts the Brazilian format: <code>;</code> separator, preamble, total row and BOM.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Saldo das contas</span><span class="lg-en">Account balances</span></h4><p><span class="lg-pt">Cartão de saldo no relatório e uma página <code>/saldos</code> com todas as contas, para a equipe ver quem está perto de parar antes do cliente perceber.</span><span class="lg-en">A balance card in the report and a <code>/saldos</code> page listing every account, so the team sees who is close to stopping before the client notices.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Link para o cliente</span><span class="lg-en">Link for the client</span></h4><p><span class="lg-pt">Um clique gera um endereço curto <code>/r/&lt;código&gt;</code> que abre o relatório sem login. Uma tela lista os links emitidos e permite revogar cada um.</span><span class="lg-en">One click generates a short address <code>/r/&lt;code&gt;</code> that opens the report without login. A screen lists the issued links and lets you revoke each one.</span></p></div>
+</div>
+</section>
+<section>
+<h3 class="tit"><span class="lg-pt">O que exigiu escolha</span><span class="lg-en">What required a decision</span></h3>
+<div class="lista">
+<div class="item"><h4><span class="lg-pt">Link que não se adivinha</span><span class="lg-en">A link nobody can guess</span></h4><p><span class="lg-pt">O código do link é aleatório, com cerca de 49 bits, e não carrega informação: trocar uma letra não leva ao relatório de outro cliente. Os parâmetros são guardados no servidor e validados de novo ao abrir.</span><span class="lg-en">The link code is random, about 49 bits, and carries no information: changing one letter does not lead to another client's report. The parameters are stored on the server and validated again on open.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Cache que nunca derruba</span><span class="lg-en">Cache that never takes it down</span></h4><p><span class="lg-pt">As respostas da Meta e do GA4 ficam no KV. Um período já encerrado vale 24 horas; um período que inclui hoje, 10 minutos. Se o cache falhar, a consulta segue direto para a API, sem página de erro.</span><span class="lg-en">Responses from Meta and GA4 are kept in KV. A period that has already ended is valid for 24 hours; a period that includes today, 10 minutes. If the cache fails, the query goes straight to the API, with no error page.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Sessão assinada</span><span class="lg-en">Signed session</span></h4><p><span class="lg-pt">O login antigo gravava a própria senha num cookie legível pelo navegador. Isso saiu. Agora o cookie carrega um token HMAC que expira em 12 horas, com <code>HttpOnly</code> e <code>SameSite=Strict</code>, e o login tem limite de tentativas.</span><span class="lg-en">The old login stored the password itself in a cookie readable by the browser. That is gone. Now the cookie carries an HMAC token that expires in 12 hours, with <code>HttpOnly</code> and <code>SameSite=Strict</code>, and the login has an attempt limit.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Toda ação checa sessão</span><span class="lg-en">Every action checks the session</span></h4><p><span class="lg-pt">Toda Server Action chama <code>requireAuth()</code> antes de tocar no banco. Ela é um POST endereçável e poderia ser chamada a partir de uma rota aberta, como o login.</span><span class="lg-en">Every Server Action calls <code>requireAuth()</code> before touching the database. It is an addressable POST and could be invoked from an open route, such as the login.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Deploy que avisa antes</span><span class="lg-en">Deploy that warns first</span></h4><p><span class="lg-pt">Um preflight de variáveis roda antes de cada build e trava se faltar segredo. Os erros que só apareceriam em produção, como a rota agendada devolvendo 503, viram falha de build.</span><span class="lg-en">A variables preflight runs before every build and blocks it if a secret is missing. Errors that would only show up in production, like the scheduled route returning 503, become build failures.</span></p></div>
+</div>
+</section>
+</article>
+<article class="projeto" id="crm">
+<div class="abre">
+<h2><span class="lg-pt">CRM Privado</span><span class="lg-en">Private CRM</span></h2>
+<p class="lede"><span class="lg-pt">Quem usa a ferramenta divide o dia entre a agência, um negócio de mídia indoor e a vida
+pessoal. Tudo começou como um protótipo em React que guardava dados só no
+navegador. Hoje é um produto em produção, com banco de dados, três áreas
+independentes e acesso pelo celular.</span><span class="lg-en">Whoever uses the tool splits the day between the agency, an indoor media business and personal life. It started as a React prototype that kept data only in the browser. Today it is a production product, with a database, three independent areas and phone access.</span></p>
+<div class="ficha">
+<div><span class="rot"><span class="lg-pt">Papel</span><span class="lg-en">Role</span></span><span class="val"><span class="lg-pt">Desenvolvimento integral</span><span class="lg-en">Full development</span></span></div>
+<div><span class="rot"><span class="lg-pt">Período</span><span class="lg-en">Period</span></span><span class="val"><span class="lg-pt">Ago – set / 2026</span><span class="lg-en">Aug – Sep / 2026</span></span></div>
+<div><span class="rot">Stack</span><span class="val">TypeScript · Hono · Drizzle</span></div>
+<div><span class="rot">Infra</span><span class="val">Cloudflare Workers · Neon</span></div>
+<div><span class="rot"><span class="lg-pt">Estado</span><span class="lg-en">Status</span></span><span class="val"><span class="lg-pt">Em produção</span><span class="lg-en">In production</span></span></div>
+</div>
+</div>
+<section>
+<h3 class="tit"><span class="lg-pt">Do localStorage para a produção</span><span class="lg-en">From localStorage to production</span></h3>
+<div class="prosa">
+<p><span class="lg-pt">A versão 2.0 do protótipo já tinha a ideia certa: lista de tarefas por frente de
+trabalho, funil de leads e exportação em CSV. Mas tudo morava no
+<code>localStorage</code>. Trocar de computador significava perder os dados, e o
+celular não via nada.</span><span class="lg-en">Version 2.0 of the prototype already had the right idea: task lists per workstream, a lead funnel and CSV export. But everything lived in <code>localStorage</code>. Switching computers meant losing the data, and the phone saw nothing.</span></p>
+<p class="secundario"><span class="lg-pt">A reescrita manteve a lógica que já estava em uso e trocou a base: API num
+Worker, Postgres serverless e uma tela que funciona no toque. Depois disso o
+produto cresceu por pedidos dele e da equipe.</span><span class="lg-en">The rewrite kept the logic already in use and swapped the foundation: an API on a Worker, serverless Postgres and a screen that works by touch. After that the product grew from requests by its user and the team.</span></p>
+</div>
+<div class="numeros">
+<div><span class="n">3</span><span class="rot"><span class="lg-pt">Áreas com senha própria</span><span class="lg-en">Areas with their own password</span></span></div>
+<div><span class="n">8</span><span class="rot"><span class="lg-pt">Estágios do funil</span><span class="lg-en">Funnel stages</span></span></div>
+<div><span class="n">39</span><span class="rot"><span class="lg-pt">Clientes de mídia importados</span><span class="lg-en">Media clients imported</span></span></div>
+<div><span class="n">7</span><span class="rot"><span class="lg-pt">Tabelas da operação de mídia</span><span class="lg-en">Media operation tables</span></span></div>
+</div>
+</section>
+<section>
+<h3 class="tit"><span class="lg-pt">Três áreas que não se enxergam</span><span class="lg-en">Three areas that cannot see each other</span></h3>
+<div class="areas">
+<div class="area">
+<span class="rota">/tarefas</span>
+<h4>Jobs</h4>
+<p><span class="lg-pt">Tarefas do dia separadas em Agência, Mídia indoor e Pessoal.</span><span class="lg-en">Daily tasks split into Agency, Indoor media and Personal.</span></p>
+<ul>
+<li><span class="lg-pt">Descrição, prazo e cor por tarefa</span><span class="lg-en">Description, due date and color per task</span></li>
+<li><span class="lg-pt">Concluir esconde a tarefa, com "Desfazer" por 8 s</span><span class="lg-en">Completing hides the task, with "Undo" for 8 s</span></li>
+<li><span class="lg-pt">Ordem com setas no celular</span><span class="lg-en">Reordering with arrows on the phone</span></li>
+</ul>
+<span class="chave"><span class="lg-pt">senha própria · não leva ao CRM</span><span class="lg-en">own password · does not lead to the CRM</span></span>
+</div>
+<div class="area">
+<span class="rota">/crm</span>
+<h4><span class="lg-pt">CRM de mídia indoor</span><span class="lg-en">Indoor media CRM</span></h4>
+<p><span class="lg-pt">Vendas de mídia indoor, do primeiro contato ao fechamento.</span><span class="lg-en">Indoor media sales, from first contact to close.</span></p>
+<ul>
+<li><span class="lg-pt">Kanban de 8 estágios com follow-up vencido</span><span class="lg-en">8-stage kanban with overdue follow-up</span></li>
+<li><span class="lg-pt">Prospecção por segmento, promovida a lead em um clique</span><span class="lg-en">Prospecting by segment, promoted to lead in one click</span></li>
+<li><span class="lg-pt">Parque de telas instaladas por cliente</span><span class="lg-en">Installed screen base per client</span></li>
+</ul>
+<span class="chave"><span class="lg-pt">senha própria · marca própria</span><span class="lg-en">own password · own branding</span></span>
+</div>
+<div class="area">
+<span class="rota">/planilha</span>
+<h4><span class="lg-pt">Agenda de mídia da agência</span><span class="lg-en">Agency media schedule</span></h4>
+<p><span class="lg-pt">A operação de tráfego pago que antes vivia num PDF.</span><span class="lg-en">The paid traffic operation that used to live in a PDF.</span></p>
+<ul>
+<li><span class="lg-pt">Central de pendências em tabela e kanban</span><span class="lg-en">Pending-items hub as table and kanban</span></li>
+<li><span class="lg-pt">Saldo das contas lido da Meta</span><span class="lg-en">Account balance read from Meta</span></li>
+<li><span class="lg-pt">Recarga lançada colando a mensagem crua</span><span class="lg-en">Top-up logged by pasting the raw message</span></li>
+</ul>
+<span class="chave"><span class="lg-pt">senha própria · cookie <code>__Host-</code> por área</span><span class="lg-en">own password · <code>__Host-</code> cookie per area</span></span>
+</div>
+</div>
+</section>
+<section>
+<h3 class="tit"><span class="lg-pt">O que exigiu escolha</span><span class="lg-en">What required a decision</span></h3>
+<div class="lista">
+<div class="item"><h4><span class="lg-pt">Isolamento real</span><span class="lg-en">Real isolation</span></h4><p><span class="lg-pt">Cada área tem senha e cookie próprios. Nenhuma página revela a existência das outras, e a API de uma não responde com a sessão de outra.</span><span class="lg-en">Each area has its own password and cookie. No page reveals the existence of the others, and one area's API does not respond to another's session.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Nada derivado no banco</span><span class="lg-en">Nothing derived in the database</span></h4><p><span class="lg-pt">"Atrasada", faixa de saldo e situação do cliente são calculados na leitura, a partir das datas. Um status gravado precisaria de alguém atualizando à meia-noite; um calculado nunca fica desencontrado.</span><span class="lg-en">"Overdue", balance band and client status are computed at read time, from the dates. A stored status would need someone updating it at midnight; a computed one never goes out of sync.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Saldo da Meta sem falso zero</span><span class="lg-en">Meta balance without a false zero</span></h4><p><span class="lg-pt">O saldo é o limite de gasto menos o valor já gasto. Conta sem limite definido não grava nada, porque um zero ali marcaria como esgotada justamente a conta que pode gastar à vontade. Cada sobrescrita guarda o valor anterior no histórico.</span><span class="lg-en">The balance is the spend limit minus the amount already spent. An account with no limit set records nothing, because a zero there would mark as depleted exactly the account that can spend freely. Each overwrite keeps the previous value in the history.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Bloqueio de login no banco</span><span class="lg-en">Login lockout in the database</span></h4><p><span class="lg-pt">Três erros em 30 minutos travam a origem, e um freio global fecha o login sob ataque distribuído. O IP entra só como HMAC truncado: o histórico conta tentativas sem registrar quem acessou de onde.</span><span class="lg-en">Three failures in 30 minutes lock the source, and a global brake closes the login under a distributed attack. The IP is stored only as a truncated HMAC: the history counts attempts without recording who accessed from where.</span></p></div>
+<div class="item"><h4><span class="lg-pt">CSP sem <code>unsafe-inline</code></span><span class="lg-en">CSP without <code>unsafe-inline</code></span></h4><p><span class="lg-pt">Nenhum script ou estilo inline. Os eventos entram por delegação, e a cor escolhida para cada tarefa é aplicada via CSSOM.</span><span class="lg-en">No inline script or style. Events are attached by delegation, and the color chosen for each task is applied via CSSOM.</span></p></div>
+<div class="item"><h4><span class="lg-pt">Migrações aditivas</span><span class="lg-en">Additive migrations</span></h4><p><span class="lg-pt">Cada mudança de schema é um script idempotente que só acrescenta. Uma tabela em produção nunca é recriada por engano.</span><span class="lg-en">Every schema change is an idempotent script that only adds. A production table is never recreated by mistake.</span></p></div>
+</div>
+</section>
+<section>
+<h3 class="tit"><span class="lg-pt">O que mudou na rotina</span><span class="lg-en">What changed in the routine</span></h3>
+<div class="prosa">
+<p><span class="lg-pt">As tarefas passaram a acompanhar o usuário do computador ao celular, e o funil
+de vendas ganhou um aviso de follow-up vencido. A operação de mídia da agência
+saiu de um PDF para um painel onde o saldo de cada conta se atualiza sozinho.</span><span class="lg-en">Tasks now follow the user from the computer to the phone, and the sales funnel gained an overdue follow-up alert. The agency's media operation moved from a PDF to a panel where each account's balance updates itself.</span></p>
+<p class="secundario"><span class="lg-pt">Tudo roda num único Worker com banco serverless, sem servidor para manter.</span><span class="lg-en">Everything runs on a single Worker with a serverless database, with no server to maintain.</span></p>
+</div>
+</section>
+</article>
+<div class="nota">
+<p><span class="lg-pt">A maquete e os exemplos desta página usam <strong>dados fictícios</strong>: nenhum
+cliente, valor, conta de anúncio ou contato real aparece aqui.</span><span class="lg-en">The mockup and the examples on this page use <strong>fictitious data</strong>: no real client, amount, ad account or contact appears here.</span></p>
+</div>
+<footer class="rodape"><span class="lg-pt">João Pinheiro Brumatti · Desenvolvimento de produto · 2026</span><span class="lg-en">João Pinheiro Brumatti · Product development · 2026</span></footer>
+</div>
 </body></html>

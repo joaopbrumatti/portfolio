@@ -1,4 +1,5 @@
 ---
+import LangToggle from './LangToggle.astro';
 ---
 
 <section class="relative flex min-h-screen flex-col overflow-hidden bg-black text-white">
@@ -17,11 +18,12 @@
       <div class="flex items-center gap-2 lg:gap-4">
         <span class="text-xl lg:text-2xl font-bold tracking-widest italic -skew-x-12">JPB</span>
         <span class="h-3 lg:h-4 w-px bg-white/40"></span>
-        <span class="hidden sm:inline text-[8px] lg:text-[10px] text-white/60 tracking-wider">DESENVOLVEDOR WEB</span>
+        <span class="hidden sm:inline text-[8px] lg:text-[10px] text-white/60 tracking-wider"><span class="lg-pt">DESENVOLVEDOR WEB</span><span class="lg-en">WEB DEVELOPER</span></span>
       </div>
-      <nav class="flex gap-5 text-[10px] lg:text-xs tracking-wider text-white/70">
-        <a href="/estudos-de-caso/" class="hover:text-white">PROJETOS</a>
-        <a href="mailto:joaobrkol96@gmail.com" class="hover:text-white">CONTATO</a>
+      <nav class="flex items-center gap-4 lg:gap-5 text-[10px] lg:text-xs tracking-wider text-white/70">
+        <a href="/estudos-de-caso/" class="hover:text-white"><span class="lg-pt">PROJETOS</span><span class="lg-en">PROJECTS</span></a>
+        <a href="mailto:joaobrkol96@gmail.com" class="hover:text-white"><span class="lg-pt">CONTATO</span><span class="lg-en">CONTACT</span></a>
+        <LangToggle />
       </nav>
     </div>
   </div>
@@ -45,14 +47,12 @@
         </div>
 
         <p class="text-xs lg:text-base text-white/70 mb-5 lg:mb-6 leading-relaxed">
-          Estudante da UFRN e desenvolvedor web. Crio sites e aplicações sob
-          medida, além de ferramentas internas para negócios, como painéis de
-          relatórios e CRMs.
+          <span class="lg-pt">Estudante da UFRN e desenvolvedor web. Crio sites e aplicações sob medida, além de ferramentas internas para negócios, como painéis de relatórios e CRMs.</span><span class="lg-en">UFRN student and web developer. I build custom websites and web applications, plus internal tools for businesses, such as reporting dashboards and CRMs.</span>
         </p>
 
         <div class="flex flex-col lg:flex-row gap-3 lg:gap-4">
-          <a href="/estudos-de-caso/" class="px-5 lg:px-6 py-2 lg:py-2.5 border border-white text-xs lg:text-sm text-center hover:bg-white hover:text-black transition-colors duration-200">VER PROJETOS</a>
-          <a href="mailto:joaobrkol96@gmail.com" class="px-5 lg:px-6 py-2 lg:py-2.5 border border-white text-xs lg:text-sm text-center hover:bg-white hover:text-black transition-colors duration-200">CONTATO</a>
+          <a href="/estudos-de-caso/" class="px-5 lg:px-6 py-2 lg:py-2.5 border border-white text-xs lg:text-sm text-center hover:bg-white hover:text-black transition-colors duration-200"><span class="lg-pt">VER PROJETOS</span><span class="lg-en">VIEW PROJECTS</span></a>
+          <a href="mailto:joaobrkol96@gmail.com" class="px-5 lg:px-6 py-2 lg:py-2.5 border border-white text-xs lg:text-sm text-center hover:bg-white hover:text-black transition-colors duration-200"><span class="lg-pt">CONTATO</span><span class="lg-en">CONTACT</span></a>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
     <div class="max-w-6xl mx-auto px-4 lg:px-8 py-2 lg:py-3 flex items-center justify-between gap-4 text-[8px] lg:text-[10px] text-white/60 tracking-wider">
       <span class="flex items-center gap-2">
         <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#44D62C] animate-pulse"></span>
-        DISPONÍVEL PARA FREELANCE
+        <span class="lg-pt">DISPONÍVEL PARA FREELANCE</span><span class="lg-en">AVAILABLE FOR FREELANCE</span>
       </span>
       <span class="flex items-center gap-4">
         <a href="mailto:joaobrkol96@gmail.com" class="hover:text-white">E-MAIL</a>
